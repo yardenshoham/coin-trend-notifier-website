@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/coin-trend-notifier-website/static/css/main.b100e6da.chunk.css",
+    "main.js": "/coin-trend-notifier-website/static/js/main.6fb53433.chunk.js",
+    "main.js.map": "/coin-trend-notifier-website/static/js/main.6fb53433.chunk.js.map",
+    "runtime-main.js": "/coin-trend-notifier-website/static/js/runtime-main.c023e4a3.js",
+    "runtime-main.js.map": "/coin-trend-notifier-website/static/js/runtime-main.c023e4a3.js.map",
+    "static/js/2.417857c8.chunk.js": "/coin-trend-notifier-website/static/js/2.417857c8.chunk.js",
+    "static/js/2.417857c8.chunk.js.map": "/coin-trend-notifier-website/static/js/2.417857c8.chunk.js.map",
+    "index.html": "/coin-trend-notifier-website/index.html",
+    "precache-manifest.fea1f2ed37ad53418238acf40e186676.js": "/coin-trend-notifier-website/precache-manifest.fea1f2ed37ad53418238acf40e186676.js",
+    "service-worker.js": "/coin-trend-notifier-website/service-worker.js",
+    "static/css/main.b100e6da.chunk.css.map": "/coin-trend-notifier-website/static/css/main.b100e6da.chunk.css.map",
+    "static/media/logo.svg": "/coin-trend-notifier-website/static/media/logo.25bf045c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c023e4a3.js",
+    "static/js/2.417857c8.chunk.js",
+    "static/css/main.b100e6da.chunk.css",
+    "static/js/main.6fb53433.chunk.js"
+  ]
+}
