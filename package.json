@@ -13,6 +13,8 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
+        "coverage": "set CI=true&&react-scripts test *.test.* --coverage",
+        "doc": "jsdoc src -r -d docs",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
     },
