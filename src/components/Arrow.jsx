@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons";
+import { faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons";
 
 const Arrow = ({ angle, color, ...rest }) => {
   const compAngle = color === "green" ? angle : angle + 90;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import HomepageNavbar from "./components/HomepageNavbar";
 import TrendsContainer from "./components/TrendsContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Arrow from "./components/Arrow";
+// import Arrow from "./components/Arrow";
 
 export default class App extends Component {
   render() {
