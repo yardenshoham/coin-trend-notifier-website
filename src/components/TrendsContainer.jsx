@@ -19,7 +19,7 @@ class TrendsContainer extends Component {
             <SingleTrendContainer
               key={"STD" + index}
               base={trend.base}
-              qutoe={trend.quote}
+              quote={trend.quote}
               type={trend.type}
               chance={trend.chance}
               url={trend.url}

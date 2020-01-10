@@ -3,12 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons";
 
-const Arrow = ({ angle, color, ...rest }) => {
+const Arrow = ({ color, ...rest }) => {
+  var angle = 45;
   const compAngle = color === "green" ? angle : angle + 90;
   return (
     <FontAwesomeIcon
       icon={faLongArrowAltUp}
-      size="6x"
+      size="3x"
       style={{
         color: color,
         transform: "rotate(" + compAngle + "deg)",
