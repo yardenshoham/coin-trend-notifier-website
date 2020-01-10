@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import HomepageNavbar from "./components/HomepageNavbar";
-import SingleTrendContainer from "./components/SingleTrendContainer";
+import TrendsContainer from "./components/TrendsContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Arrow from "./components/Arrow";
 
@@ -13,13 +13,12 @@ export default class App extends Component {
         <div
           style={{
             position: "relative",
-            height: "100px",
             border: "1px solid black",
             margin: "30px"
           }}
           className="HomepageBody"
         >
-          <SingleTrendContainer />
+          <TrendsContainer />
         </div>
         {/* <div style={{ position: "relative", top: "50px" }}>
           <Arrow color={"green"} angle={45} />
