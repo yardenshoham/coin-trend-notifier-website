@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import BorderedBox from "./BordredBox";
+// import BorderedBox from "./BordredBox";
 import { Component } from "react";
 
 class SingleTrendContainer extends Component {
