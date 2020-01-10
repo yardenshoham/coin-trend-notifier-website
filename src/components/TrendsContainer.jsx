@@ -17,6 +17,7 @@ class TrendsContainer extends Component {
         {this.state.allTrends.map((trend, index) => {
           return (
             <SingleTrendContainer
+              key={"STD" + index}
               base={trend.base}
               qutoe={trend.quote}
               type={trend.type}
