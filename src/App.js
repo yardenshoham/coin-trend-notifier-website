@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Arrow from "./components/Arrow";
 
 class App extends Component {
   render() {
@@ -15,6 +16,9 @@ class App extends Component {
             <Nav.Link href="#account">Account</Nav.Link>
           </Nav>
         </Navbar>
+        <div style={{ position: "relative", top: "50px" }}>
+          <Arrow color={"green"} angle={45} />
+        </div>
       </div>
     );
   }
