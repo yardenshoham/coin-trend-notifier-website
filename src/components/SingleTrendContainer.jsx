@@ -1,13 +1,15 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Badge } from "react-bootstrap";
 // import BorderedBox from "./BordredBox";
 import { Component } from "react";
 import Arrow from "./Arrow";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class SingleTrendContainer extends Component {
   verticalCenterStyle = {
-    position: "relative",
-    top: "36px"
+    minHeight: "100%",
+    display: "flex",
+    alignItems: "center"
   };
   borderStyle = {
     padding: "5px",
@@ -22,7 +24,11 @@ class SingleTrendContainer extends Component {
           <Row noGutters="true">
             <Col>
               <h1 style={this.verticalCenterStyle}>
-                {this.props.base + "/" + this.props.quote}
+                <Badge
+                  variant={this.props.type === "up" ? "success" : "danger"}
+                >
+                  {this.props.base + "/" + this.props.quote}
+                </Badge>
               </h1>
             </Col>
             <Col style={{ textAlign: "center" }}>
@@ -35,7 +41,13 @@ class SingleTrendContainer extends Component {
               </h1>
             </Col>
             <Col>
-              <h1 style={this.verticalCenterStyle}>{this.props.chance}</h1>
+              <h1 style={this.verticalCenterStyle}>
+                <Badge
+                  variant={this.props.type === "up" ? "success" : "danger"}
+                >
+                  {this.props.chance + "%"}
+                </Badge>
+              </h1>
             </Col>
             <Col>
               <h1 style={this.verticalCenterStyle}>{this.props.url}</h1>

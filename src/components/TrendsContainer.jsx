@@ -6,9 +6,9 @@ class TrendsContainer extends Component {
     allTrends: [
       { base: "BTC", quote: "USDT", type: "up", chance: 30, url: "#href" },
       { base: "ETH", quote: "USDT", type: "up", chance: 30, url: "#href" },
-      { base: "TRX", quote: "USDT", type: "up", chance: 30, url: "#href" },
+      { base: "TRX", quote: "USDT", type: "down", chance: 30, url: "#href" },
       { base: "ETH", quote: "BTC", type: "up", chance: 30, url: "#href" },
-      { base: "TRX", quote: "BTC", type: "up", chance: 30, url: "#href" }
+      { base: "TRX", quote: "BTC", type: "down", chance: 30, url: "#href" }
     ]
   };
   render() {
