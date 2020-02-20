@@ -8,7 +8,6 @@ export default class App extends Component {
     return (
       <div className="NotRegister">
         <HomepageNavbar />
-
         <div
           style={{
             position: "relative",
