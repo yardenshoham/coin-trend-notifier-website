@@ -19,7 +19,7 @@ const HomepageNavbar = () => {
               width="90px"
               className="d-inline-block align-top"
               alt="logo"
-              style={{ marginLeft: "20px" }}
+              style={{ marginLeft: "15px" }}
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

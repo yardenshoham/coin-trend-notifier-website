@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import SingleTrendContainer from "./SingleTrendContainer";
 
 class TrendsContainer extends Component {
@@ -19,32 +19,37 @@ class TrendsContainer extends Component {
   };
   borderStyle = {
     padding: "5px",
-    border: "1px solid black",
     textAlign: "center"
   };
 
   render() {
     return (
       <React.Fragment>
-        <Container fluid="true" style={this.borderStyle}>
-          <Row noGutters="true">
-            <Col>
-              <h3 style={this.verticalCenterStyle}>Asset</h3>
-            </Col>
-            <Col>
-              <h3 style={this.verticalCenterStyle}>Expected to</h3>
-            </Col>
-            <Col>
-              <h3 style={this.verticalCenterStyle}>Possibilty</h3>
-            </Col>
-            <Col>
-              <h3 style={this.verticalCenterStyle}>...</h3>
-            </Col>
-          </Row>
-        </Container>
+        <Card>
+          <Container fluid="true" style={this.borderStyle}>
+            <Row noGutters="true">
+              <Col xs={1}>
+                <h4 style={this.verticalCenterStyle}>#</h4>
+              </Col>
+              <Col>
+                <h4 style={this.verticalCenterStyle}>Asset</h4>
+              </Col>
+              <Col>
+                <h4 style={this.verticalCenterStyle}>Expected to</h4>
+              </Col>
+              <Col>
+                <h4 style={this.verticalCenterStyle}>Possibilty</h4>
+              </Col>
+              <Col>
+                <h4 style={this.verticalCenterStyle}>More info</h4>
+              </Col>
+            </Row>
+          </Container>
+        </Card>
         {this.state.allTrends.map((trend, index) => {
           return (
             <SingleTrendContainer
+              indx={index + 1}
               key={"STD" + index}
               base={trend.base}
               quote={trend.quote}

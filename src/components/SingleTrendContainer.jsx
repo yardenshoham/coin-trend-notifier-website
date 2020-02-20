@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Badge } from "react-bootstrap";
+import { Container, Row, Col, Badge, Card } from "react-bootstrap";
 // import BorderedBox from "./BordredBox";
 import { Component } from "react";
 import Arrow from "./Arrow";
@@ -11,54 +11,66 @@ class SingleTrendContainer extends Component {
     display: "flex",
     alignItems: "center"
   };
+  verticalCenterMarginzStyle = {
+    minHeight: "100%",
+    display: "flex",
+    alignItems: "center",
+    width: "0px"
+  };
   borderStyle = {
     padding: "5px",
-    border: "1px solid black",
     textAlign: "center"
   };
 
   render() {
     return (
       <React.Fragment>
-        <Container fluid="true" style={this.borderStyle}>
-          <Row noGutters="true">
-            <Col>
-              <h1 style={this.verticalCenterStyle}>
-                <Badge
-                  variant={this.props.type === "up" ? "success" : "danger"}
-                >
-                  {this.props.base + "/" + this.props.quote}
-                </Badge>
-              </h1>
-            </Col>
-            <Col
-              style={{
-                display: "flex",
-                alignItems: "center"
-              }}
-            >
-              <h1>
-                {this.props.type === "up" ? (
-                  <Arrow color="green" />
-                ) : (
-                  <Arrow color="red" />
-                )}
-              </h1>
-            </Col>
-            <Col>
-              <h1 style={this.verticalCenterStyle}>
-                <Badge
-                  variant={this.props.type === "up" ? "success" : "danger"}
-                >
-                  {this.props.chance + "%"}
-                </Badge>
-              </h1>
-            </Col>
-            <Col>
-              <h1 style={this.verticalCenterStyle}>{this.props.url}</h1>
-            </Col>
-          </Row>
-        </Container>
+        <Card>
+          <Container fluid="true" style={this.borderStyle}>
+            <Row noGutters="true">
+              <Col xs={1}>
+                <h3 style={this.verticalCenterMarginzStyle}>
+                  {this.props.indx}
+                </h3>
+              </Col>
+              <Col>
+                <h3 style={this.verticalCenterStyle}>
+                  <Badge
+                    variant={this.props.type === "up" ? "success" : "danger"}
+                  >
+                    {this.props.base + "/" + this.props.quote}
+                  </Badge>
+                </h3>
+              </Col>
+              <Col
+                style={{
+                  display: "flex",
+                  alignItems: "center"
+                }}
+              >
+                <h3>
+                  {this.props.type === "up" ? (
+                    <Arrow color="green" />
+                  ) : (
+                    <Arrow color="red" />
+                  )}
+                </h3>
+              </Col>
+              <Col>
+                <h3 style={this.verticalCenterStyle}>
+                  <Badge
+                    variant={this.props.type === "up" ? "success" : "danger"}
+                  >
+                    {this.props.chance + "%"}
+                  </Badge>
+                </h3>
+              </Col>
+              <Col>
+                <h3 style={this.verticalCenterStyle}>{this.props.url}</h3>
+              </Col>
+            </Row>
+          </Container>
+        </Card>
       </React.Fragment>
     );
   }

@@ -11,7 +11,6 @@ export default class App extends Component {
         <div
           style={{
             position: "relative",
-            border: "1px solid black",
             margin: "30px",
             maxWidth: "960px",
             margin: "auto"
