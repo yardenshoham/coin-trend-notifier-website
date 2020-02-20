@@ -15,7 +15,8 @@ class SingleTrendContainer extends Component {
     minHeight: "100%",
     display: "flex",
     alignItems: "center",
-    width: "0px"
+    width: "0px",
+    color: "lightslategrey"
   };
   borderStyle = {
     padding: "5px",

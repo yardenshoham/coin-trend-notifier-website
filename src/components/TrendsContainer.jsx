@@ -15,7 +15,8 @@ class TrendsContainer extends Component {
   verticalCenterStyle = {
     minHeight: "100%",
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    color: "lightslategrey"
   };
   borderStyle = {
     padding: "5px",
