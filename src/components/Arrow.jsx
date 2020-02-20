@@ -9,7 +9,7 @@ const Arrow = ({ color, ...rest }) => {
   return (
     <FontAwesomeIcon
       icon={faLongArrowAltUp}
-      size="3x"
+      size="2x"
       style={{
         color: color,
         transform: "rotate(" + compAngle + "deg)",

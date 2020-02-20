@@ -31,7 +31,12 @@ class SingleTrendContainer extends Component {
                 </Badge>
               </h1>
             </Col>
-            <Col style={{ textAlign: "center" }}>
+            <Col
+              style={{
+                display: "flex",
+                alignItems: "center"
+              }}
+            >
               <h1>
                 {this.props.type === "up" ? (
                   <Arrow color="green" />
