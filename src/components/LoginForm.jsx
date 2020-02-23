@@ -31,20 +31,22 @@ const LoginForm = () => {
           </Row>
           <Row className="justify-content-md-center">
             <Col
-              md={4}
+              md={5}
               xs={10}
               style={{ textAlign: "center" }}
               className={styleMargin}
             >
-              <a>Forgotten your password?</a>
+              <Button variant="outline-primary">
+                Forgotten your password?
+              </Button>
             </Col>
             <Col
-              md={4}
+              md={5}
               xs={10}
               style={{ textAlign: "center" }}
               className={styleMargin}
             >
-              <a>Click here for Signup</a>
+              <Button variant="outline-primary">Click here for Signup</Button>
             </Col>
           </Row>
         </Container>
