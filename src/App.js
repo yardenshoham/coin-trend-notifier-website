@@ -3,6 +3,7 @@ import HomepageNavbar from "./components/HomepageNavbar";
 import TrendsContainer from "./components/TrendsContainer";
 import LoginForm from "./components/LoginForm";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default class App extends Component {
   render() {
@@ -26,19 +27,24 @@ export default class App extends Component {
       return (
         <div className="NotRegisterBody">
           <HomepageNavbar />
-          <div
-            style={{
-              border: "1px solid gray",
-              padding: "50px",
-              position: "relative",
-              top: "100px",
-              maxWidth: "540px",
-              margin: "auto"
-            }}
-            className="HomepageBody"
-          >
-            <LoginForm />
-          </div>
+          <Container fluid className="HomepageBody">
+            <Row>
+              <Col
+                style={{
+                  border: "1px solid gray",
+                  padding: "50px",
+                  position: "relative",
+                  top: "10%",
+                  margin: "auto",
+                  boxShadow: "0px -3px 13px -2px"
+                }}
+                md={5}
+                xs={10}
+              >
+                <LoginForm />
+              </Col>
+            </Row>
+          </Container>
         </div>
       );
     }
