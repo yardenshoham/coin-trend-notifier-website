@@ -1,32 +1,53 @@
 const req = require("request");
+const axios = require("axios").default;
 
-const path = "https://coin-trend-notifier-api.herokuapp.com/api/";
+const path = "https://coin-trend-notifier-api.herokuapp.com/";
 const log = console.log;
 
 // Checks the server's availablity
 const check_servers_availablity = () => {
-  req.get(path, (json = true), (err, res, body) => {
-    if (err) {
-      return log(err);
-    }
-    return log(res.body);
-  });
+  axios
+    .get(path)
+    .then(function(res) {
+      log(res.data);
+    })
+    .catch(function(err) {
+      log(err);
+    });
 };
 
-// Creates a new user
-req.post(
-  {
-    headers: {},
-    url: path + "users",
-    json: true,
-    body: JSON.stringify({
-      email: "test.av2@gmail.com",
+let res;
+const create_new_user = func => {
+  axios
+    .post(path + "api/users", {
+      email: "test.av3@gmail.com",
       password: "12345678",
-      username: "test_user2",
+      username: "test_user3",
       alertLimit: 0
     })
-  },
-  () => {
+    .then(function(res) {
+      res = res.data;
+    })
+    .catch(function(err) {
+      log(err);
+    })
+    .then(function() {
+      func();
+    });
+};
+create_new_user(() => {
+  log(res);
+});
+
+// Creates a new user
+const create = () => {
+  req.post(
+    {
+      headers: {},
+      url: path + "users",
+      json: true,
+      body: JSON.stringify()
+    },
     (err, res, body) => {
       if (err) {
         log(err);
@@ -35,10 +56,11 @@ req.post(
       } else {
         log(body);
       }
-    };
-  }
-);
+    }
+  );
+};
 
+/*
 // Update a user
 req.put(
   {
@@ -52,18 +74,16 @@ req.put(
       alertLimit: 604800
     })
   },
-  () => {
-    (err, res, body) => {
-      if (err) {
-        log(err);
-      } else if (res.statusCode === 400) {
-        log("Validation Error");
-      } else if (res.statusCode === 409) {
-        log("Email is taken");
-      } else {
-        log(body);
-      }
-    };
+  (err, res, body) => {
+    if (err) {
+      log(err);
+    } else if (res.statusCode === 400) {
+      log("Validation Error");
+    } else if (res.statusCode === 409) {
+      log("Email is taken");
+    } else {
+      log(body);
+    }
   }
 );
 
@@ -78,16 +98,14 @@ req.post(
       password: "123456789"
     })
   },
-  () => {
-    (err, res, body) => {
-      if (err) {
-        log(err);
-      } else if (res.statusCode === 401) {
-        log("User unregistered or Incorrect password");
-      } else {
-        log(body);
-      }
-    };
+  (err, res, body) => {
+    if (err) {
+      log(err);
+    } else if (res.statusCode === 401) {
+      log("User unregistered or Incorrect password");
+    } else {
+      log(body);
+    }
   }
 );
 
@@ -102,17 +120,16 @@ req.patch(
       newPassword: "123456789"
     })
   },
-  () => {
-    (err, res, body) => {
-      if (err) {
-        log(err);
-      } else if (res.statusCode === 400) {
-        log("Validation Error");
-      } else if (res.statusCode === 422) {
-        log("User not exist or Wrong password");
-      } else {
-        log(body);
-      }
-    };
+  (err, res, body) => {
+    if (err) {
+      log(err);
+    } else if (res.statusCode === 400) {
+      log("Validation Error");
+    } else if (res.statusCode === 422) {
+      log("User not exist or Wrong password");
+    } else {
+      log(body);
+    }
   }
 );
+*/
