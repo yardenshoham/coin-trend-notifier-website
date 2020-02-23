@@ -8,7 +8,7 @@ const setPreference = async (probability, baseAssetName, quoteAssetName) => {
   let token = localStorage.getItem("jwt");
   let config = { headers: { Authorization: `Bearer ${token}` } };
   return await axios.post(
-    path + "prefernces",
+    path + "api/prefernces",
     {
       probability,
       baseAssetName,
@@ -23,7 +23,7 @@ const deletePreference = async PreferenceDto => {
   let token = localStorage.getItem("jwt");
   let config = { headers: { Authorization: `Bearer ${token}` } };
   return await axios.delete(
-    path + "prefernces",
+    path + "api/prefernces",
     {
       PreferenceDto
     },
@@ -35,5 +35,5 @@ const deletePreference = async PreferenceDto => {
 const getPreference = async () => {
   let token = localStorage.getItem("jwt");
   let config = { headers: { Authorization: `Bearer ${token}` } };
-  return await axios.get(path + "prefernces", config);
+  return await axios.get(path + "api/prefernces", config);
 };
