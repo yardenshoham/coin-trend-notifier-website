@@ -9,10 +9,27 @@ export default class App extends Component {
   state = {
     loggedIn: false
   };
-  handleLogin = () => {};
+
+  changeLoggedIn() {
+    this.setState({ loggedIn: true });
+  }
+
+  handleLogin = event => {
+    // prevent page from refreshing
+    event.preventDefault();
+
+    // check connectivity
+    // console.log(systemConnector.check_servers_availablity());
+    // login
+    // error handling
+    // save token in localStorage
+    console.log("token saved");
+    // change state to loggedIn=true;
+    this.changeLoggedIn();
+  };
 
   render() {
-    if (localStorage.getItem("jwt")) {
+    if (this.state.loggedIn) {
       return (
         <div className="RegisterBody">
           <HomepageNavbar />
@@ -46,7 +63,7 @@ export default class App extends Component {
                 md={5}
                 xs={10}
               >
-                <LoginForm />
+                <LoginForm onLogin={this.handleLogin} />
               </Col>
             </Row>
           </Container>
