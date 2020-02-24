@@ -6,6 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 
 export default class App extends Component {
+  state = {
+    loggedIn: false
+  };
+  handleLogin = () => {};
+
   render() {
     if (localStorage.getItem("jwt")) {
       return (

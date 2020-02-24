@@ -1,11 +1,20 @@
 import React from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import UsersConnector from "../connectors/usersConnector";
+import * as systemConnector from "../connectors/systemConnector";
+
 const styleMargin = "m-3";
 
 const LoginForm = () => {
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(systemConnector.check_servers_availablity());
+    console.log("Form submitted");
+  }
+
   return (
     <React.Fragment>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formLogin">
           <Form.Label>Username</Form.Label>
           <Form.Control placeholder="Username/Email" />
