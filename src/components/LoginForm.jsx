@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import UsersConnector from "../connectors/usersConnector";
-import * as systemConnector from "../connectors/systemConnector";
+// import UsersConnector from "../connectors/usersConnector";
+// import * as systemConnector from "../connectors/systemConnector";
 
 const styleMargin = "m-3";
 
@@ -21,11 +21,7 @@ export default class LoginForm extends Component {
           {/*need to add functionality for next 3 buttons: */}
           <Container>
             <Row className="justify-content-md-center">
-              <Col
-                md="3"
-                style={{ textAlign: "center" }}
-                className={styleMargin}
-              >
+              <Col style={{ textAlign: "center" }} className={styleMargin}>
                 <Button
                   variant="primary"
                   size="lg"
