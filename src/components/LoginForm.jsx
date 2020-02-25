@@ -11,8 +11,8 @@ export default class LoginForm extends Component {
       <React.Fragment>
         <Form onSubmit={this.props.onLogin}>
           <Form.Group controlId="formLogin">
-            <Form.Label>Username</Form.Label>
-            <Form.Control placeholder="Username/Email" />
+            <Form.Label>Email</Form.Label>
+            <Form.Control placeholder="Email" />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>

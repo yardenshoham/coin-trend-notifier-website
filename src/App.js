@@ -4,6 +4,7 @@ import TrendsContainer from "./components/TrendsContainer";
 import LoginForm from "./components/LoginForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
+import * as systemConnector from "./connectors/systemConnector";
 
 export default class App extends Component {
   state = {
@@ -14,12 +15,12 @@ export default class App extends Component {
     this.setState({ loggedIn: true });
   }
 
-  handleLogin = event => {
+  handleLogin = async event => {
     // prevent page from refreshing
     event.preventDefault();
 
     // check connectivity
-    // console.log(systemConnector.check_servers_availablity());
+    console.log((await systemConnector.check_servers_availablity()).data);
     // login
     // error handling
     // save token in localStorage
@@ -58,7 +59,8 @@ export default class App extends Component {
                   position: "relative",
                   top: "10%",
                   margin: "auto",
-                  boxShadow: "0px -3px 13px -2px"
+                  boxShadow: "0px 0px 10px -2px",
+                  borderRadius: "1%"
                 }}
                 md={5}
                 xs={10}
