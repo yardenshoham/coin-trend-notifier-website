@@ -11,22 +11,8 @@ export default class App extends Component {
     loggedIn: false
   };
 
-  changeLoggedIn() {
+  handleLoggedInChange = () => {
     this.setState({ loggedIn: true });
-  }
-
-  handleLogin = async event => {
-    // prevent page from refreshing
-    event.preventDefault();
-
-    // check connectivity
-    console.log((await systemConnector.check_servers_availablity()).data);
-    // login
-    // error handling
-    // save token in localStorage
-    console.log("token saved");
-    // change state to loggedIn=true;
-    this.changeLoggedIn();
   };
 
   render() {
@@ -65,7 +51,7 @@ export default class App extends Component {
                 md={5}
                 xs={10}
               >
-                <LoginForm onLogin={this.handleLogin} />
+                <LoginForm onLogin={this.handleLoggedInChange} />
               </Col>
             </Row>
           </Container>
