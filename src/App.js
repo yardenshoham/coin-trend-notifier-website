@@ -4,7 +4,6 @@ import TrendsContainer from "./components/TrendsContainer";
 import LoginForm from "./components/LoginForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import * as systemConnector from "./connectors/systemConnector";
 
 export default class App extends Component {
   state = {
@@ -18,7 +17,7 @@ export default class App extends Component {
   render() {
     if (this.state.loggedIn) {
       return (
-        <div className="RegisterBody">
+        <React.Fragment>
           <HomepageNavbar />
           <div
             style={{
@@ -30,11 +29,11 @@ export default class App extends Component {
           >
             <TrendsContainer />
           </div>
-        </div>
+        </React.Fragment>
       );
     } else {
       return (
-        <div className="NotRegisterBody">
+        <React.Fragment>
           <HomepageNavbar />
           <Container fluid className="HomepageBody">
             <Row>
@@ -55,7 +54,7 @@ export default class App extends Component {
               </Col>
             </Row>
           </Container>
-        </div>
+        </React.Fragment>
       );
     }
   }
