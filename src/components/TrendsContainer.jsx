@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import SingleTrendContainer from "./SingleTrendContainer";
+import * as eventConnector from "../connectors/eventConnector";
 
 class TrendsContainer extends Component {
   state = {
@@ -22,6 +23,20 @@ class TrendsContainer extends Component {
     padding: "5px",
     textAlign: "center"
   };
+
+  handleAllTrends = async () => {
+    let res = await eventConnector.getEvents();
+    //need to load the allTrends in the state from the res
+    console.log(res);
+  };
+
+  componentDidMount() {
+    try {
+      this.handleAllTrends();
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   render() {
     return (
