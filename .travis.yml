@@ -1,15 +1,22 @@
 language: node_js
 node_js:
-    - "10"
+  - "10"
 cache:
-    directories:
-        - node_modules
+  directories:
+    - node_modules
 install:
-    - npm install -g codecov
-    - npm install @testing-library/jest-dom
+  - npm install -g codecov
+  - npm install @testing-library/jest-dom
 notifications:
-    email: false
+  email: false
 script:
-    - npm run build
-    - npm run coverage
-    - codecov
+  - npm run build
+  - npm run coverage
+  - codecov
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
