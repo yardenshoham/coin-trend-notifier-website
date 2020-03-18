@@ -1,7 +1,6 @@
 const axios = require("axios").default;
 
 const path = "https://coin-trend-notifier-api.herokuapp.com/";
-const log = console.log;
 
 // Get Events' History
 export const getEvents = amount => {
