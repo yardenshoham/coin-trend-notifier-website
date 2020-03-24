@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f34d4e776c6e48f487be26de78c38710",
+    "revision": "20556e82f16fc2c6db075eb70e0c94b3",
     "url": "/coin-trend-notifier-website/index.html"
   },
   {
-    "revision": "5e95d371c2b5fa13e12c",
+    "revision": "57111f94768c8c67a969",
     "url": "/coin-trend-notifier-website/static/css/2.de424728.chunk.css"
   },
   {
-    "revision": "9659d7c7bc62fd7f24ac",
+    "revision": "6253bf5ee6f3773ffa7b",
     "url": "/coin-trend-notifier-website/static/css/main.34de6062.chunk.css"
   },
   {
-    "revision": "5e95d371c2b5fa13e12c",
-    "url": "/coin-trend-notifier-website/static/js/2.042335a3.chunk.js"
+    "revision": "57111f94768c8c67a969",
+    "url": "/coin-trend-notifier-website/static/js/2.00a2edec.chunk.js"
   },
   {
     "revision": "5ac48c47bb3912b14c2d8de4f56d5ae8",
-    "url": "/coin-trend-notifier-website/static/js/2.042335a3.chunk.js.LICENSE.txt"
+    "url": "/coin-trend-notifier-website/static/js/2.00a2edec.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9659d7c7bc62fd7f24ac",
-    "url": "/coin-trend-notifier-website/static/js/main.6a842a41.chunk.js"
+    "revision": "6253bf5ee6f3773ffa7b",
+    "url": "/coin-trend-notifier-website/static/js/main.f1d55519.chunk.js"
   },
   {
     "revision": "5f5aaeb0a123364d348e",

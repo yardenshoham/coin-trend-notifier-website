@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/coin-trend-notifier-website/static/css/main.34de6062.chunk.css",
-    "main.js": "/coin-trend-notifier-website/static/js/main.6a842a41.chunk.js",
-    "main.js.map": "/coin-trend-notifier-website/static/js/main.6a842a41.chunk.js.map",
+    "main.js": "/coin-trend-notifier-website/static/js/main.f1d55519.chunk.js",
+    "main.js.map": "/coin-trend-notifier-website/static/js/main.f1d55519.chunk.js.map",
     "runtime-main.js": "/coin-trend-notifier-website/static/js/runtime-main.39794221.js",
     "runtime-main.js.map": "/coin-trend-notifier-website/static/js/runtime-main.39794221.js.map",
     "static/css/2.de424728.chunk.css": "/coin-trend-notifier-website/static/css/2.de424728.chunk.css",
-    "static/js/2.042335a3.chunk.js": "/coin-trend-notifier-website/static/js/2.042335a3.chunk.js",
-    "static/js/2.042335a3.chunk.js.map": "/coin-trend-notifier-website/static/js/2.042335a3.chunk.js.map",
+    "static/js/2.00a2edec.chunk.js": "/coin-trend-notifier-website/static/js/2.00a2edec.chunk.js",
+    "static/js/2.00a2edec.chunk.js.map": "/coin-trend-notifier-website/static/js/2.00a2edec.chunk.js.map",
     "index.html": "/coin-trend-notifier-website/index.html",
-    "precache-manifest.f8f4427b65db1ec903a124c532e5894a.js": "/coin-trend-notifier-website/precache-manifest.f8f4427b65db1ec903a124c532e5894a.js",
+    "precache-manifest.1eb368beeb587b8ca248c93fcc3c942c.js": "/coin-trend-notifier-website/precache-manifest.1eb368beeb587b8ca248c93fcc3c942c.js",
     "service-worker.js": "/coin-trend-notifier-website/service-worker.js",
     "static/css/2.de424728.chunk.css.map": "/coin-trend-notifier-website/static/css/2.de424728.chunk.css.map",
     "static/css/main.34de6062.chunk.css.map": "/coin-trend-notifier-website/static/css/main.34de6062.chunk.css.map",
-    "static/js/2.042335a3.chunk.js.LICENSE.txt": "/coin-trend-notifier-website/static/js/2.042335a3.chunk.js.LICENSE.txt",
+    "static/js/2.00a2edec.chunk.js.LICENSE.txt": "/coin-trend-notifier-website/static/js/2.00a2edec.chunk.js.LICENSE.txt",
     "static/media/logo.png": "/coin-trend-notifier-website/static/media/logo.6d974881.png"
   },
   "entrypoints": [
     "static/js/runtime-main.39794221.js",
     "static/css/2.de424728.chunk.css",
-    "static/js/2.042335a3.chunk.js",
+    "static/js/2.00a2edec.chunk.js",
     "static/css/main.34de6062.chunk.css",
-    "static/js/main.6a842a41.chunk.js"
+    "static/js/main.f1d55519.chunk.js"
   ]
 }
