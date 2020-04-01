@@ -3,9 +3,10 @@ import HomepageNavbar from "./components/HomepageNavbar";
 import TrendsContainer from "./components/TrendsContainer";
 import LoginForm from "./components/LoginForm";
 import AccountWindow from "./components/AccountWindow";
+import SignupForm from "./components/SignupForm";
+import Preferences from "./components/Preferences";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import SignupForm from "./components/SignupForm";
 
 export default class App extends Component {
   state = {
@@ -24,7 +25,6 @@ export default class App extends Component {
   };
 
   handleAccountWindow = () => {
-    console.log("handling");
     this.setState({ accountWindow: !this.state.accountWindow });
   };
 
@@ -34,7 +34,11 @@ export default class App extends Component {
         return (
           <React.Fragment>
             <HomepageNavbar onAccountWindowChange={this.handleAccountWindow} />
-            <AccountWindow visible={this.state.accountWindow} />
+            <AccountWindow
+              visible={this.state.accountWindow}
+              onPageToDisplayChange={this.handlePageToDisplay}
+              isSignedIn={this.state.loggedIn}
+            />
             <Container fluid className="HomepageBody">
               <Row>
                 <Col
@@ -60,6 +64,11 @@ export default class App extends Component {
         return (
           <React.Fragment>
             <HomepageNavbar onAccountWindowChange={this.handleAccountWindow} />
+            <AccountWindow
+              visible={this.state.accountWindow}
+              onPageToDisplayChange={this.handlePageToDisplay}
+              isSignedIn={this.state.loggedIn}
+            />
             <div
               style={{
                 position: "relative",
@@ -76,7 +85,11 @@ export default class App extends Component {
         return (
           <React.Fragment>
             <HomepageNavbar onAccountWindowChange={this.handleAccountWindow} />
-            <AccountWindow visible={this.state.accountWindow} />
+            <AccountWindow
+              visible={this.state.accountWindow}
+              onPageToDisplayChange={this.handlePageToDisplay}
+              isSignedIn={this.state.loggedIn}
+            />
             <Container fluid className="HomepageBody">
               <Row>
                 <Col
@@ -100,6 +113,40 @@ export default class App extends Component {
             </Container>
           </React.Fragment>
         );
+      case "settings":
+        return <React.Fragment></React.Fragment>;
+      case "preferences":
+        return (
+          <React.Fragment>
+            <HomepageNavbar onAccountWindowChange={this.handleAccountWindow} />
+            <AccountWindow
+              visible={this.state.accountWindow}
+              onPageToDisplayChange={this.handlePageToDisplay}
+              isSignedIn={this.state.loggedIn}
+            />
+            <Container fluid className="HomepageBody">
+              <Row>
+                <Col
+                  style={{
+                    border: "1px solid gray",
+                    padding: "50px",
+                    position: "relative",
+                    top: "10%",
+                    margin: "auto",
+                    boxShadow: "0px 0px 8px -2px",
+                    borderRadius: "1%"
+                  }}
+                  md={8}
+                  xs={10}
+                >
+                  <Preferences />
+                </Col>
+              </Row>
+            </Container>
+          </React.Fragment>
+        );
+      case "about":
+        return <React.Fragment></React.Fragment>;
       default:
         return <div>ERROR</div>;
     }

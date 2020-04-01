@@ -13,7 +13,8 @@ class AccountWindow extends Component {
             width: "18%",
             position: "absolute",
             right: "3px",
-            display: this.props.visible ? "block" : "none"
+            display: this.props.visible ? "block" : "none",
+            zIndex: "1"
           }}
         >
           <ListGroup.Item
@@ -22,7 +23,7 @@ class AccountWindow extends Component {
               color: "white"
             }}
           >
-            Hi {"Username"}
+            Hi {this.props.isSignedIn === true ? "Username" : "Guest"}
           </ListGroup.Item>
           <ListGroup.Item
             style={{
@@ -30,7 +31,7 @@ class AccountWindow extends Component {
               color: "rgba(255,255,255,.5)"
             }}
             action
-            href="#My preferences"
+            onClick={() => this.props.onPageToDisplayChange("preferences")}
           >
             My Preferences
           </ListGroup.Item>
@@ -41,6 +42,7 @@ class AccountWindow extends Component {
             }}
             action
             href="#Account Settiings"
+            onClick={() => this.props.onPageToDisplayChange("settings")}
           >
             Account Settings
           </ListGroup.Item>

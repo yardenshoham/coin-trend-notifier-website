@@ -1,14 +1,17 @@
 const axios = require("axios").default;
 
-const path = "https://coin-trend-notifier-api.herokuapp.com/";
-const log = console.log;
+const path = "https://coin-trend-notifier-api.herokuapp.com/api/preferences";
 
 // Set User Preference
-const setPreference = async (probability, baseAssetName, quoteAssetName) => {
+export const setPreference = async (
+  probability,
+  baseAssetName,
+  quoteAssetName
+) => {
   let token = localStorage.getItem("jwt");
   let config = { headers: { Authorization: `Bearer ${token}` } };
   return await axios.post(
-    path + "api/prefernces",
+    path,
     {
       probability,
       baseAssetName,
@@ -19,11 +22,11 @@ const setPreference = async (probability, baseAssetName, quoteAssetName) => {
 };
 
 // Delete User Preference
-const deletePreference = async PreferenceDto => {
+export const deletePreference = async PreferenceDto => {
   let token = localStorage.getItem("jwt");
   let config = { headers: { Authorization: `Bearer ${token}` } };
   return await axios.delete(
-    path + "api/prefernces",
+    path,
     {
       PreferenceDto
     },
@@ -32,8 +35,8 @@ const deletePreference = async PreferenceDto => {
 };
 
 // Get User Preference
-const getPreference = async () => {
+export const getPreferences = async () => {
   let token = localStorage.getItem("jwt");
   let config = { headers: { Authorization: `Bearer ${token}` } };
-  return await axios.get(path + "api/prefernces", config);
+  return await axios.get(path, config);
 };
