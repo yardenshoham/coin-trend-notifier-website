@@ -9,7 +9,7 @@ class AccountWindow extends Component {
       <React.Fragment>
         <ListGroup
           style={{
-            top: "10%",
+            top: "7%",
             width: "18%",
             position: "absolute",
             right: "3px",

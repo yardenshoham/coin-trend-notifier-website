@@ -16,9 +16,9 @@ class Preferences extends Component {
         quoteAssetName: "BTC"
       }
     ],
+    editing: [false, false],
     baseCoins: ["BTC", "ETH", "TRX", "USDT"],
-    quoteCoins: ["BTC", "ETH", "TRX", "USDT"],
-    newProbabilities: []
+    quoteCoins: ["BTC", "ETH", "TRX", "USDT"]
   };
 
   handlePreferenceChanges = (type, idx, event) => {
@@ -35,23 +35,59 @@ class Preferences extends Component {
     }
   };
 
-  handleNewProbabilities = () => {
+  handleNewUserPreferences = () => {
     this.setState({
       userPrefences: this.state.userPreferences.push({
-        probability: "probability",
+        probability: "Probability",
         baseAssetName: "Base Coin",
         quoteAssetName: "Quote Coin"
-      })
+      }),
+      editing: [...this.state.editing, true]
     });
   };
 
-  handleSaveChanges = () => {};
+  handleEditPreference = idx => {
+    let tempEditing = this.state.editing;
+    tempEditing[idx] = !tempEditing[idx];
+    if (!tempEditing[idx]) {
+      // check that only valid inputs are in
+      if (
+        this.state.userPreferences[idx].baseAssetName === "Base Coin" ||
+        this.state.userPreferences[idx].quoteAssetName === "Quote Coin" ||
+        this.state.userPreferences[idx].probability === "Probability"
+      ) {
+        tempEditing[idx] = !tempEditing[idx];
+        //make some error that saying that there are invalid inputs
+        console.log("preferenced could not be saved");
+      }
+
+      if (!tempEditing[idx]) {
+        // save this preference in the server
+        console.log("preference saved");
+      }
+    }
+    this.setState({ editing: tempEditing });
+  };
+
+  handleSavePreferenceChanges = idx => {};
+
+  handleRemovePreference = idx => {
+    let tempUserPreferences = this.state.userPreferences;
+    tempUserPreferences.splice(idx);
+    this.setState({ userPreferences: tempUserPreferences });
+  };
+
+  handleSaveChanges = event => {
+    event.preventDefault();
+    let newUserPreferences = this.state.userPreferences;
+  };
 
   componentDidMount = async () => {
     // let userPreferences = await PreferencesConnector.getPreferences();
     // //deal with if empty
     // console.log(userPreferences);
     // this.setState({ userPreferences });
+    //deal with editing too
   };
 
   calculateProbabilities = () => {
@@ -78,8 +114,26 @@ class Preferences extends Component {
             return (
               <Card>
                 <Form.Row>
+                  <Col xs={1}>
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => this.handleRemovePreference(idx)}
+                    >
+                      x
+                    </Button>
+                  </Col>
+                  <Col xs={1.2}>
+                    <Button
+                      id={"preference_" + idx}
+                      variant="outline-info"
+                      onClick={() => this.handleEditPreference(idx)}
+                    >
+                      {this.state.editing[idx] === false ? "Edit" : "Save"}
+                    </Button>
+                  </Col>
                   <Col>
                     <Form.Control
+                      disabled={!this.state.editing[idx]}
                       as="select"
                       onChange={e =>
                         this.handlePreferenceChanges("base", idx, e)
@@ -102,6 +156,7 @@ class Preferences extends Component {
                   </Col>
                   <Col>
                     <Form.Control
+                      disabled={!this.state.editing[idx]}
                       as="select"
                       onChange={e =>
                         this.handlePreferenceChanges("quote", idx, e)
@@ -122,9 +177,10 @@ class Preferences extends Component {
                   </Col>
                   <Col>
                     <Form.Control
+                      disabled={!this.state.editing[idx]}
                       as="select"
                       onChange={e =>
-                        this.handlePreferenceChanges("base", idx, e)
+                        this.handlePreferenceChanges("prob", idx, e)
                       }
                     >
                       <option>Probability</option>
@@ -148,7 +204,7 @@ class Preferences extends Component {
             <Button type="submit">Save Changes</Button>{" "}
             <Button
               variant="outline-primary"
-              onClick={this.handleNewProbabilities}
+              onClick={this.handleNewUserPreferences}
             >
               Add New Preference
             </Button>
