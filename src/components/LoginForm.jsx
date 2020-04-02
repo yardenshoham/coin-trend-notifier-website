@@ -30,13 +30,7 @@ export default class LoginForm extends Component {
     event.preventDefault();
     try {
       // login
-      let res = await usersConnector.loginUser(
-        this.state.email,
-        this.state.password
-      );
-      // save token in localStorage
-      localStorage.setItem("jwt", res.jwt);
-      console.log("token saved");
+      await usersConnector.loginUser(this.state.email, this.state.password);
 
       // succesfully logged in;
       this.props.onPageToDisplayChange("trendsContainer");
