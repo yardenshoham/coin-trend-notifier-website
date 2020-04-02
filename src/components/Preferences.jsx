@@ -4,19 +4,8 @@ import { Col, Card, Form, Button, ButtonToolbar } from "react-bootstrap";
 
 class Preferences extends Component {
   state = {
-    userPreferences: [
-      {
-        probability: 25,
-        baseAssetName: "BTC",
-        quoteAssetName: "USDT"
-      },
-      {
-        probability: 10,
-        baseAssetName: "ETH",
-        quoteAssetName: "BTC"
-      }
-    ],
-    editing: [false, false],
+    userPreferences: [],
+    editing: [],
     baseCoins: ["BTC", "ETH", "TRX", "USDT"],
     quoteCoins: ["BTC", "ETH", "TRX", "USDT"]
   };
@@ -46,23 +35,32 @@ class Preferences extends Component {
     });
   };
 
-  handleEditPreference = idx => {
-    let tempEditing = this.state.editing;
-    tempEditing[idx] = !tempEditing[idx];
+  handleEditPreference = async idx => {
+    let tempEditing = this.state.editing; //all are false
+    tempEditing[idx] = !tempEditing[idx]; //change current to true
     if (!tempEditing[idx]) {
+      //if current is false
       // check that only valid inputs are in
       if (
         this.state.userPreferences[idx].baseAssetName === "Base Coin" ||
         this.state.userPreferences[idx].quoteAssetName === "Quote Coin" ||
         this.state.userPreferences[idx].probability === "Probability"
       ) {
-        tempEditing[idx] = !tempEditing[idx];
+        tempEditing[idx] = !tempEditing[idx]; //if invalids then change to true
         //make some error that saying that there are invalid inputs
         console.log("preferenced could not be saved");
       }
 
       if (!tempEditing[idx]) {
         // save this preference in the server
+        await PreferencesConnector.setPreference(
+          parseFloat(this.state.userPreferences[idx].probability),
+          this.state.userPreferences[idx].baseAssetName,
+          this.state.userPreferences[idx].quoteAssetName
+        );
+
+        // refresh the data
+        this.refreshData();
         console.log("preference saved");
       }
     }
@@ -71,29 +69,35 @@ class Preferences extends Component {
 
   handleSavePreferenceChanges = idx => {};
 
-  handleRemovePreference = idx => {
+  handleRemovePreference = async idx => {
     let tempUserPreferences = this.state.userPreferences;
-    tempUserPreferences.splice(idx);
-    this.setState({ userPreferences: tempUserPreferences });
+    console.log(typeof idx);
+    await PreferencesConnector.deletePreference({
+      baseAssetName: tempUserPreferences[idx].baseAssetName,
+      quoteAssetName: tempUserPreferences[idx].quoteAssetName
+    });
+
+    this.refreshData();
   };
 
-  handleSaveChanges = event => {
-    event.preventDefault();
-    let newUserPreferences = this.state.userPreferences;
+  refreshData = async () => {
+    let userPreferences = await PreferencesConnector.getPreferences();
+    //deal with if empty
+    let editing = [];
+    for (let i = 0; i < userPreferences.data.length; i++) {
+      editing.push(false);
+    }
+    this.setState({ userPreferences: userPreferences.data, editing });
   };
 
   componentDidMount = async () => {
-    // let userPreferences = await PreferencesConnector.getPreferences();
-    // //deal with if empty
-    // console.log(userPreferences);
-    // this.setState({ userPreferences });
-    //deal with editing too
+    await this.refreshData();
   };
 
   calculateProbabilities = () => {
     let probs = [];
-    for (let i = 0; i < 101; i += 5) {
-      probs.push(i);
+    for (let i = -100; i <= 100; i += 10) {
+      probs.push(i / 100);
     }
     return probs;
   };
@@ -200,8 +204,8 @@ class Preferences extends Component {
             );
           })}
           <br />
-          <ButtonToolbar className="justify-content-between">
-            <Button type="submit">Save Changes</Button>{" "}
+          <ButtonToolbar className="justify-content-center">
+            {/* <Button type="submit">Save Changes</Button>{" "} */}
             <Button
               variant="outline-primary"
               onClick={this.handleNewUserPreferences}

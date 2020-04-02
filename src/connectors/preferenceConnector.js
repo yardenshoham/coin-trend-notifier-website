@@ -26,10 +26,11 @@ export const deletePreference = async PreferenceDto => {
   let token = localStorage.getItem("jwt");
   let config = { headers: { Authorization: `Bearer ${token}` } };
   return await axios.delete(
-    path,
-    {
-      PreferenceDto
-    },
+    path +
+      "?baseAssetName=" +
+      PreferenceDto.baseAssetName +
+      "&quoteAssetName=" +
+      PreferenceDto.quoteAssetName,
     config
   );
 };
