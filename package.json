@@ -41,7 +41,7 @@
         ]
     },
     "devDependencies": {
-        "@types/jest": "^25.1.4",
+        "@types/jest": "^25.1.5",
         "gh-pages": "^2.2.0"
     }
 }
