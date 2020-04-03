@@ -103,6 +103,95 @@ class Preferences extends Component {
   };
 
   render() {
+    let cards;
+    try {
+      cards = this.state.userPreferences.map((preference, idx) => {
+        return (
+          <Card>
+            <Form.Row>
+              <Col xs={1}>
+                <Button
+                  variant="outline-danger"
+                  onClick={() => this.handleRemovePreference(idx)}
+                >
+                  x
+                </Button>
+              </Col>
+              <Col xs={1.2}>
+                <Button
+                  id={"preference_" + idx}
+                  variant="outline-info"
+                  onClick={() => this.handleEditPreference(idx)}
+                >
+                  {this.state.editing[idx] === false ? "Edit" : "Save"}
+                </Button>
+              </Col>
+              <Col>
+                <Form.Control
+                  disabled={!this.state.editing[idx]}
+                  as="select"
+                  onChange={e => this.handlePreferenceChanges("base", idx, e)}
+                >
+                  <option>Base Coin</option>
+                  {this.state.baseCoins.map(coin => {
+                    if (coin === preference.baseAssetName)
+                      return (
+                        <option value={coin} selected>
+                          {coin}
+                        </option>
+                      );
+                    return <option value={coin}>{coin}</option>;
+                  })}
+                </Form.Control>
+              </Col>
+              <Col style={{ textAlign: "center" }} xs={1}>
+                {"/"}
+              </Col>
+              <Col>
+                <Form.Control
+                  disabled={!this.state.editing[idx]}
+                  as="select"
+                  onChange={e => this.handlePreferenceChanges("quote", idx, e)}
+                >
+                  <option>Quote Coin</option>
+                  {this.state.quoteCoins.map(coin => {
+                    if (coin === preference.quoteAssetName) {
+                      return (
+                        <option value={coin} selected>
+                          {coin}
+                        </option>
+                      );
+                    }
+                    return <option value={coin}>{coin}</option>;
+                  })}
+                </Form.Control>
+              </Col>
+              <Col>
+                <Form.Control
+                  disabled={!this.state.editing[idx]}
+                  as="select"
+                  onChange={e => this.handlePreferenceChanges("prob", idx, e)}
+                >
+                  <option>Probability</option>
+                  {this.calculateProbabilities().map(num => {
+                    if (num === preference.probability)
+                      return (
+                        <option value={num} selected>
+                          {num}
+                        </option>
+                      );
+                    return <option value={num}>{num}</option>;
+                  })}
+                </Form.Control>
+              </Col>
+            </Form.Row>
+          </Card>
+        );
+      });
+    } catch (error) {
+      cards = null;
+    }
+
     return (
       <React.Fragment>
         <h1>Hi, {"Username"}</h1>
@@ -114,95 +203,7 @@ class Preferences extends Component {
         <br />
         <br />
         <Form onSubmit={this.handleSaveChanges}>
-          {this.state.userPreferences.map((preference, idx) => {
-            return (
-              <Card>
-                <Form.Row>
-                  <Col xs={1}>
-                    <Button
-                      variant="outline-danger"
-                      onClick={() => this.handleRemovePreference(idx)}
-                    >
-                      x
-                    </Button>
-                  </Col>
-                  <Col xs={1.2}>
-                    <Button
-                      id={"preference_" + idx}
-                      variant="outline-info"
-                      onClick={() => this.handleEditPreference(idx)}
-                    >
-                      {this.state.editing[idx] === false ? "Edit" : "Save"}
-                    </Button>
-                  </Col>
-                  <Col>
-                    <Form.Control
-                      disabled={!this.state.editing[idx]}
-                      as="select"
-                      onChange={e =>
-                        this.handlePreferenceChanges("base", idx, e)
-                      }
-                    >
-                      <option>Base Coin</option>
-                      {this.state.baseCoins.map(coin => {
-                        if (coin === preference.baseAssetName)
-                          return (
-                            <option value={coin} selected>
-                              {coin}
-                            </option>
-                          );
-                        return <option value={coin}>{coin}</option>;
-                      })}
-                    </Form.Control>
-                  </Col>
-                  <Col style={{ textAlign: "center" }} xs={1}>
-                    {"/"}
-                  </Col>
-                  <Col>
-                    <Form.Control
-                      disabled={!this.state.editing[idx]}
-                      as="select"
-                      onChange={e =>
-                        this.handlePreferenceChanges("quote", idx, e)
-                      }
-                    >
-                      <option>Quote Coin</option>
-                      {this.state.quoteCoins.map(coin => {
-                        if (coin === preference.quoteAssetName) {
-                          return (
-                            <option value={coin} selected>
-                              {coin}
-                            </option>
-                          );
-                        }
-                        return <option value={coin}>{coin}</option>;
-                      })}
-                    </Form.Control>
-                  </Col>
-                  <Col>
-                    <Form.Control
-                      disabled={!this.state.editing[idx]}
-                      as="select"
-                      onChange={e =>
-                        this.handlePreferenceChanges("prob", idx, e)
-                      }
-                    >
-                      <option>Probability</option>
-                      {this.calculateProbabilities().map(num => {
-                        if (num === preference.probability)
-                          return (
-                            <option value={num} selected>
-                              {num}
-                            </option>
-                          );
-                        return <option value={num}>{num}</option>;
-                      })}
-                    </Form.Control>
-                  </Col>
-                </Form.Row>
-              </Card>
-            );
-          })}
+          {cards}
           <br />
           <ButtonToolbar className="justify-content-center">
             {/* <Button type="submit">Save Changes</Button>{" "} */}
