@@ -7,7 +7,7 @@ class Preferences extends Component {
     userPreferences: [],
     editing: [],
     baseCoins: ["BTC", "ETH", "TRX", "USDT"],
-    quoteCoins: ["BTC", "ETH", "TRX", "USDT"]
+    quoteCoins: ["BTC", "ETH", "TRX", "USDT"],
   };
 
   handlePreferenceChanges = (type, idx, event) => {
@@ -29,14 +29,14 @@ class Preferences extends Component {
       userPrefences: this.state.userPreferences.push({
         probability: "Probability",
         baseAssetName: "Base Coin",
-        quoteAssetName: "Quote Coin"
+        quoteAssetName: "Quote Coin",
       }),
-      editing: [...this.state.editing, true]
+      editing: [...this.state.editing, true],
     });
   };
 
-  handleEditPreference = async idx => {
-    let tempEditing = this.state.editing; //all are false
+  handleEditPreference = async (idx) => {
+    let tempEditing = this.state.editing;
     tempEditing[idx] = !tempEditing[idx]; //change current to true
     if (!tempEditing[idx]) {
       //if current is false
@@ -64,17 +64,22 @@ class Preferences extends Component {
         console.log("preference saved");
       }
     }
+
     this.setState({ editing: tempEditing });
   };
 
-  handleSavePreferenceChanges = idx => {};
-
-  handleRemovePreference = async idx => {
+  handleRemovePreference = async (idx) => {
+    if (
+      this.state.userPreferences[idx].baseAssetName === "Base Coin" ||
+      this.state.userPreferences[idx].quoteAssetName === "Quote Coin" ||
+      this.state.userPreferences[idx].probability === "Probability"
+    )
+      this.refreshData();
     let tempUserPreferences = this.state.userPreferences;
     console.log(typeof idx);
     await PreferencesConnector.deletePreference({
       baseAssetName: tempUserPreferences[idx].baseAssetName,
-      quoteAssetName: tempUserPreferences[idx].quoteAssetName
+      quoteAssetName: tempUserPreferences[idx].quoteAssetName,
     });
 
     this.refreshData();
@@ -130,10 +135,10 @@ class Preferences extends Component {
                 <Form.Control
                   disabled={!this.state.editing[idx]}
                   as="select"
-                  onChange={e => this.handlePreferenceChanges("base", idx, e)}
+                  onChange={(e) => this.handlePreferenceChanges("base", idx, e)}
                 >
                   <option>Base Coin</option>
-                  {this.state.baseCoins.map(coin => {
+                  {this.state.baseCoins.map((coin) => {
                     if (coin === preference.baseAssetName)
                       return (
                         <option value={coin} selected>
@@ -151,10 +156,12 @@ class Preferences extends Component {
                 <Form.Control
                   disabled={!this.state.editing[idx]}
                   as="select"
-                  onChange={e => this.handlePreferenceChanges("quote", idx, e)}
+                  onChange={(e) =>
+                    this.handlePreferenceChanges("quote", idx, e)
+                  }
                 >
                   <option>Quote Coin</option>
-                  {this.state.quoteCoins.map(coin => {
+                  {this.state.quoteCoins.map((coin) => {
                     if (coin === preference.quoteAssetName) {
                       return (
                         <option value={coin} selected>
@@ -170,10 +177,10 @@ class Preferences extends Component {
                 <Form.Control
                   disabled={!this.state.editing[idx]}
                   as="select"
-                  onChange={e => this.handlePreferenceChanges("prob", idx, e)}
+                  onChange={(e) => this.handlePreferenceChanges("prob", idx, e)}
                 >
                   <option>Probability</option>
-                  {this.calculateProbabilities().map(num => {
+                  {this.calculateProbabilities().map((num) => {
                     if (num === preference.probability)
                       return (
                         <option value={num} selected>
