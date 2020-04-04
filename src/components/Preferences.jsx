@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as PreferencesConnector from "../connectors/preferenceConnector";
-import { Col, Card, Form, Button, ButtonToolbar } from "react-bootstrap";
+import { Form, Button, ButtonToolbar } from "react-bootstrap";
+import Preference from "./Preference";
 
 class Preferences extends Component {
   state = {
@@ -8,20 +9,6 @@ class Preferences extends Component {
     editing: [],
     baseCoins: ["BTC", "ETH", "TRX", "USDT"],
     quoteCoins: ["BTC", "ETH", "TRX", "USDT"],
-  };
-
-  handlePreferenceChanges = (type, idx, event) => {
-    let tempUserPreferences = this.state.userPreferences;
-    if (type === "base") {
-      tempUserPreferences[idx].baseAssetName = event.target.value;
-      this.setState({ userPreferences: tempUserPreferences });
-    } else if (type === "quote") {
-      tempUserPreferences[idx].quoteAssetName = event.target.value;
-      this.setState({ userPreferences: tempUserPreferences });
-    } else if (type === "prob") {
-      tempUserPreferences[idx].probability = event.target.value;
-      this.setState({ userPreferences: tempUserPreferences });
-    }
   };
 
   handleNewUserPreferences = () => {
@@ -35,39 +22,6 @@ class Preferences extends Component {
     });
   };
 
-  handleEditPreference = async (idx) => {
-    let tempEditing = this.state.editing;
-    tempEditing[idx] = !tempEditing[idx]; //change current to true
-    if (!tempEditing[idx]) {
-      //if current is false
-      // check that only valid inputs are in
-      if (
-        this.state.userPreferences[idx].baseAssetName === "Base Coin" ||
-        this.state.userPreferences[idx].quoteAssetName === "Quote Coin" ||
-        this.state.userPreferences[idx].probability === "Probability"
-      ) {
-        tempEditing[idx] = !tempEditing[idx]; //if invalids then change to true
-        //make some error that saying that there are invalid inputs
-        console.log("preferenced could not be saved");
-      }
-
-      if (!tempEditing[idx]) {
-        // save this preference in the server
-        await PreferencesConnector.setPreference(
-          parseFloat(this.state.userPreferences[idx].probability),
-          this.state.userPreferences[idx].baseAssetName,
-          this.state.userPreferences[idx].quoteAssetName
-        );
-
-        // refresh the data
-        this.refreshData();
-        console.log("preference saved");
-      }
-    }
-
-    this.setState({ editing: tempEditing });
-  };
-
   handleRemovePreference = async (idx) => {
     if (
       this.state.userPreferences[idx].baseAssetName === "Base Coin" ||
@@ -76,7 +30,6 @@ class Preferences extends Component {
     )
       this.refreshData();
     let tempUserPreferences = this.state.userPreferences;
-    console.log(typeof idx);
     await PreferencesConnector.deletePreference({
       baseAssetName: tempUserPreferences[idx].baseAssetName,
       quoteAssetName: tempUserPreferences[idx].quoteAssetName,
@@ -87,7 +40,6 @@ class Preferences extends Component {
 
   refreshData = async () => {
     let userPreferences = await PreferencesConnector.getPreferences();
-    //deal with if empty
     let editing = [];
     for (let i = 0; i < userPreferences.data.length; i++) {
       editing.push(false);
@@ -95,122 +47,36 @@ class Preferences extends Component {
     this.setState({ userPreferences: userPreferences.data, editing });
   };
 
+  handleEditingChange = (idx, saveMode) => {
+    let temp = this.state.editing;
+    temp[idx] = saveMode;
+    this.setState({ editing: temp });
+  };
+
   componentDidMount = async () => {
     await this.refreshData();
   };
 
-  calculateProbabilities = () => {
-    let probs = [];
-    for (let i = -100; i <= 100; i += 10) {
-      probs.push(i / 100);
-    }
-    return probs;
-  };
-
   render() {
-    let cards;
+    let preferences;
     try {
-      cards = this.state.userPreferences.map((preference, idx) => {
+      preferences = this.state.userPreferences.map((preference, idx) => {
         return (
-          <Card key={"card_" + idx}>
-            <Form.Row key={"row_" + idx}>
-              <Col xs={1} key={"col_delete_" + idx}>
-                <Button
-                  key={"button_delete_" + idx}
-                  variant="outline-danger"
-                  onClick={() => this.handleRemovePreference(idx)}
-                >
-                  x
-                </Button>
-              </Col>
-              <Col xs={1.2} key={"col_edit_" + idx}>
-                <Button
-                  key={"button_edit_" + idx}
-                  id={"preference_" + idx}
-                  variant="outline-info"
-                  onClick={() => this.handleEditPreference(idx)}
-                >
-                  {this.state.editing[idx] === false ? "Edit" : "Save"}
-                </Button>
-              </Col>
-              <Col key={"col_baseCoin_" + idx}>
-                <Form.Control
-                  defaultValue={preference.baseAssetName}
-                  key={"select_baseCoin_" + idx}
-                  disabled={!this.state.editing[idx]}
-                  as="select"
-                  onChange={(e) => this.handlePreferenceChanges("base", idx, e)}
-                >
-                  <option key={"option_baseCoin_" + idx}>Base Coin</option>
-                  {this.state.baseCoins.map((coin) => {
-                    return (
-                      <option
-                        value={coin}
-                        key={"option_baseCoin_" + idx + "_" + coin}
-                      >
-                        {coin}
-                      </option>
-                    );
-                  })}
-                </Form.Control>
-              </Col>
-              <Col
-                style={{ textAlign: "center" }}
-                xs={1}
-                key={"col_slash_" + idx}
-              >
-                {"/"}
-              </Col>
-              <Col key={"col_quoteCoin_" + idx}>
-                <Form.Control
-                  key={"select_quoteCoin_" + idx}
-                  disabled={!this.state.editing[idx]}
-                  as="select"
-                  onChange={(e) =>
-                    this.handlePreferenceChanges("quote", idx, e)
-                  }
-                  defaultValue={preference.quoteAssetName}
-                >
-                  <option key={"option_quoteCoin_" + idx}>Quote Coin</option>
-                  {this.state.quoteCoins.map((coin) => {
-                    return (
-                      <option
-                        key={"option_quoteCoin_" + idx + "_" + coin}
-                        value={coin}
-                      >
-                        {coin}
-                      </option>
-                    );
-                  })}
-                </Form.Control>
-              </Col>
-              <Col key={"col_prob_" + idx}>
-                <Form.Control
-                  key={"select_prob_" + idx}
-                  defaultValue={preference.probability}
-                  disabled={!this.state.editing[idx]}
-                  as="select"
-                  onChange={(e) => this.handlePreferenceChanges("prob", idx, e)}
-                >
-                  <option>Probability</option>
-                  {this.calculateProbabilities().map((num) => {
-                    return (
-                      <option
-                        key={"option_prob_" + idx + "_" + num}
-                        value={num}
-                      >
-                        {num}
-                      </option>
-                    );
-                  })}
-                </Form.Control>
-              </Col>
-            </Form.Row>
-          </Card>
+          <Preference
+            key={"preference_" + idx}
+            index={idx}
+            preference={preference}
+            editing={this.state.editing[idx]}
+            onRemovePreference={this.handleRemovePreference}
+            baseCoins={this.state.baseCoins}
+            quoteCoins={this.state.quoteCoins}
+            refresh={this.refreshData}
+            onEditChange={this.handleEditingChange}
+          />
         );
       });
     } catch (error) {
-      cards = null;
+      preferences = null;
     }
 
     return (
@@ -224,10 +90,9 @@ class Preferences extends Component {
         <br />
         <br />
         <Form onSubmit={this.handleSaveChanges}>
-          {cards}
+          {preferences}
           <br />
           <ButtonToolbar className="justify-content-center">
-            {/* <Button type="submit">Save Changes</Button>{" "} */}
             <Button
               variant="outline-primary"
               onClick={this.handleNewUserPreferences}
@@ -235,7 +100,6 @@ class Preferences extends Component {
               Add New Preference
             </Button>
           </ButtonToolbar>
-          {}
         </Form>
       </React.Fragment>
     );
