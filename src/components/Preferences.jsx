@@ -112,18 +112,20 @@ class Preferences extends Component {
     try {
       cards = this.state.userPreferences.map((preference, idx) => {
         return (
-          <Card>
-            <Form.Row>
-              <Col xs={1}>
+          <Card key={"card_" + idx}>
+            <Form.Row key={"row_" + idx}>
+              <Col xs={1} key={"col_delete_" + idx}>
                 <Button
+                  key={"button_delete_" + idx}
                   variant="outline-danger"
                   onClick={() => this.handleRemovePreference(idx)}
                 >
                   x
                 </Button>
               </Col>
-              <Col xs={1.2}>
+              <Col xs={1.2} key={"col_edit_" + idx}>
                 <Button
+                  key={"button_edit_" + idx}
                   id={"preference_" + idx}
                   variant="outline-info"
                   onClick={() => this.handleEditPreference(idx)}
@@ -131,63 +133,75 @@ class Preferences extends Component {
                   {this.state.editing[idx] === false ? "Edit" : "Save"}
                 </Button>
               </Col>
-              <Col>
+              <Col key={"col_baseCoin_" + idx}>
                 <Form.Control
+                  defaultValue={preference.baseAssetName}
+                  key={"select_baseCoin_" + idx}
                   disabled={!this.state.editing[idx]}
                   as="select"
                   onChange={(e) => this.handlePreferenceChanges("base", idx, e)}
                 >
-                  <option>Base Coin</option>
+                  <option key={"option_baseCoin_" + idx}>Base Coin</option>
                   {this.state.baseCoins.map((coin) => {
-                    if (coin === preference.baseAssetName)
-                      return (
-                        <option value={coin} selected>
-                          {coin}
-                        </option>
-                      );
-                    return <option value={coin}>{coin}</option>;
+                    return (
+                      <option
+                        value={coin}
+                        key={"option_baseCoin_" + idx + "_" + coin}
+                      >
+                        {coin}
+                      </option>
+                    );
                   })}
                 </Form.Control>
               </Col>
-              <Col style={{ textAlign: "center" }} xs={1}>
+              <Col
+                style={{ textAlign: "center" }}
+                xs={1}
+                key={"col_slash_" + idx}
+              >
                 {"/"}
               </Col>
-              <Col>
+              <Col key={"col_quoteCoin_" + idx}>
                 <Form.Control
+                  key={"select_quoteCoin_" + idx}
                   disabled={!this.state.editing[idx]}
                   as="select"
                   onChange={(e) =>
                     this.handlePreferenceChanges("quote", idx, e)
                   }
+                  defaultValue={preference.quoteAssetName}
                 >
-                  <option>Quote Coin</option>
+                  <option key={"option_quoteCoin_" + idx}>Quote Coin</option>
                   {this.state.quoteCoins.map((coin) => {
-                    if (coin === preference.quoteAssetName) {
-                      return (
-                        <option value={coin} selected>
-                          {coin}
-                        </option>
-                      );
-                    }
-                    return <option value={coin}>{coin}</option>;
+                    return (
+                      <option
+                        key={"option_quoteCoin_" + idx + "_" + coin}
+                        value={coin}
+                      >
+                        {coin}
+                      </option>
+                    );
                   })}
                 </Form.Control>
               </Col>
-              <Col>
+              <Col key={"col_prob_" + idx}>
                 <Form.Control
+                  key={"select_prob_" + idx}
+                  defaultValue={preference.probability}
                   disabled={!this.state.editing[idx]}
                   as="select"
                   onChange={(e) => this.handlePreferenceChanges("prob", idx, e)}
                 >
                   <option>Probability</option>
                   {this.calculateProbabilities().map((num) => {
-                    if (num === preference.probability)
-                      return (
-                        <option value={num} selected>
-                          {num}
-                        </option>
-                      );
-                    return <option value={num}>{num}</option>;
+                    return (
+                      <option
+                        key={"option_prob_" + idx + "_" + num}
+                        value={num}
+                      >
+                        {num}
+                      </option>
+                    );
                   })}
                 </Form.Control>
               </Col>
