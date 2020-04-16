@@ -9,18 +9,18 @@ class SingleTrendContainer extends Component {
   verticalCenterStyle = {
     minHeight: "100%",
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   };
   verticalCenterMarginzStyle = {
     minHeight: "100%",
     display: "flex",
     alignItems: "center",
     width: "0px",
-    color: "lightslategrey"
+    color: "lightslategrey",
   };
   borderStyle = {
     padding: "5px",
-    textAlign: "center"
+    textAlign: "center",
   };
 
   render() {
@@ -46,7 +46,7 @@ class SingleTrendContainer extends Component {
               <Col
                 style={{
                   display: "flex",
-                  alignItems: "center"
+                  alignItems: "center",
                 }}
               >
                 <h3>

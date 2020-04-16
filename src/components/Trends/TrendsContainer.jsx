@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import SingleTrendContainer from "./SingleTrendContainer";
-import * as eventConnector from "../connectors/eventConnector";
+import * as eventConnector from "../../connectors/eventConnector";
 
 class TrendsContainer extends Component {
   state = {
@@ -10,18 +10,18 @@ class TrendsContainer extends Component {
       { base: "ETH", quote: "USDT", type: "up", chance: 30, url: "#href" },
       { base: "TRX", quote: "USDT", type: "down", chance: 30, url: "#href" },
       { base: "ETH", quote: "BTC", type: "up", chance: 30, url: "#href" },
-      { base: "TRX", quote: "BTC", type: "down", chance: 30, url: "#href" }
-    ]
+      { base: "TRX", quote: "BTC", type: "down", chance: 30, url: "#href" },
+    ],
   };
   verticalCenterStyle = {
     minHeight: "100%",
     display: "flex",
     alignItems: "center",
-    color: "lightslategrey"
+    color: "lightslategrey",
   };
   borderStyle = {
     padding: "5px",
-    textAlign: "center"
+    textAlign: "center",
   };
 
   handleAllTrends = async () => {

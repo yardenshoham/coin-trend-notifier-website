@@ -14,7 +14,7 @@ const Arrow = ({ color, ...rest }) => {
         color: color,
         transform: "rotate(" + compAngle + "deg)",
         marginLeft:
-          (color === "green" ? angle * 2 : (90 - angle) * 2) / 90 + "rem"
+          (color === "green" ? angle * 2 : (90 - angle) * 2) / 90 + "rem",
       }}
       {...rest}
     />

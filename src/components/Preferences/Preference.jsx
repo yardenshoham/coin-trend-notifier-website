@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Card, Form, Button } from "react-bootstrap";
-import * as PreferencesConnector from "../connectors/preferenceConnector";
+import * as PreferencesConnector from "../../connectors/preferenceConnector";
 
 class Preference extends Component {
   state = {

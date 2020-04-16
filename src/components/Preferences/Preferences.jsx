@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as PreferencesConnector from "../connectors/preferenceConnector";
+import * as PreferencesConnector from "../../connectors/preferenceConnector";
 import { Form, Button, ButtonToolbar } from "react-bootstrap";
 import Preference from "./Preference";
 

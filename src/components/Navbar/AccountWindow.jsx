@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ListGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class AccountWindow extends Component {
   state = {};
@@ -14,37 +15,32 @@ class AccountWindow extends Component {
             position: "absolute",
             right: "3px",
             display: this.props.visible ? "block" : "none",
-            zIndex: "1"
+            zIndex: "1",
           }}
         >
           <ListGroup.Item
             style={{
               backgroundColor: "#343a40",
-              color: "white"
+              color: "white",
             }}
           >
-            Hi {this.props.isSignedIn === true ? "Username" : "Guest"}
+            Hi {localStorage.getItem("jwt") ? "Username" : "Guest"}
           </ListGroup.Item>
           <ListGroup.Item
             style={{
               backgroundColor: "#343a40",
-              color: "rgba(255,255,255,.5)"
+              color: "rgba(255,255,255,.5)",
             }}
-            action
-            onClick={() => this.props.onPageToDisplayChange("preferences")}
           >
-            My Preferences
+            <Link to="/preferences">My Preferences</Link>
           </ListGroup.Item>
           <ListGroup.Item
             style={{
               backgroundColor: "#343a40",
-              color: "rgba(255,255,255,.5)"
+              color: "rgba(255,255,255,.5)",
             }}
-            action
-            href="#Account Settiings"
-            onClick={() => this.props.onPageToDisplayChange("settings")}
           >
-            Account Settings
+            <Link to="/settings">Account Settings</Link>
           </ListGroup.Item>
         </ListGroup>
       </React.Fragment>
