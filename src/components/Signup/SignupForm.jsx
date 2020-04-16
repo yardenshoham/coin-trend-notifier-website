@@ -11,7 +11,6 @@ export default function SignupForm(props) {
   const [username, setUsername] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [alertLimit, setAlertLimit] = useState("0");
-  const [signup, setSignup] = useState(false);
   const [error, setError] = useState("");
 
   const history = useHistory();

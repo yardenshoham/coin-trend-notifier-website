@@ -8,12 +8,7 @@ import Preferences from "./components/Preferences/Preferences";
 import Home from "./components/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App(props) {
   const [accountWindow, setAccountWindow] = useState(false);
