@@ -8,8 +8,9 @@ export default function AccountWindow(props) {
   return (
     <React.Fragment>
       <ListGroup
+        id="AccountWindow"
         style={{
-          top: "7%",
+          top: "80px",
           width: "18%",
           position: "absolute",
           right: "3px",

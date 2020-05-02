@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import HomepageNavbar from "./components/Navbar/HomepageNavbar";
 import TrendsContainer from "./components/Trends/TrendsContainer";
 import LoginForm from "./components/Login/LoginForm";
-import AccountWindow from "./components/Navbar/AccountWindow";
 import SignupForm from "./components/Signup/SignupForm";
 import Preferences from "./components/Preferences/Preferences";
 import Home from "./components/Home";
@@ -11,20 +10,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App(props) {
-  const [accountWindow, setAccountWindow] = useState(false);
-
-  // const history = useHistory();
-
-  const handleAccountWindow = () => {
-    setAccountWindow(!accountWindow);
-  };
-
   const whatDoDisplay = () => {
     return (
       <Router>
         <div>
-          <HomepageNavbar onAccountWindowChange={handleAccountWindow} />
-          <AccountWindow visible={accountWindow} />
+          <HomepageNavbar />
 
           <Switch>
             <Route path="/coin-trend-notifier-website/login">

@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import logo from "../../assets/logo.png";
 import { useHistory } from "react-router-dom";
+import AccountWindow from "./AccountWindow";
 
 export default function HomepageNavbar(props) {
+  const [accountWindow, setAccountWindow] = useState(false);
+
+  // const history = useHistory();
+
+  const handleAccountWindowChange = () => {
+    setAccountWindow(!accountWindow);
+  };
+
   const history = useHistory();
 
   const changepage = (pageName) => {
@@ -17,7 +26,7 @@ export default function HomepageNavbar(props) {
         expand="lg"
         bg="dark"
         variant="dark"
-        style={{ marginBottom: "30px" }}
+        style={{ marginBottom: "30px", position: "relative" }}
       >
         <Container style={{ maxWidth: "1020px", margin: "auto" }}>
           <Navbar.Brand href="#home">
@@ -38,13 +47,14 @@ export default function HomepageNavbar(props) {
             <Nav className="mr-sm-2" variant="dark">
               <Nav.Link
                 style={{ color: "rgba(255,255,255,.5)" }}
-                onClick={() => props.onAccountWindowChange()}
+                onClick={() => handleAccountWindowChange()}
               >
                 Account
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
+        <AccountWindow visible={accountWindow} />
       </Navbar>
     </React.Fragment>
   );
