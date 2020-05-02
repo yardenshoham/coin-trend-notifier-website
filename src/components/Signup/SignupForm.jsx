@@ -9,7 +9,7 @@ export default function SignupForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
   const [alertLimit, setAlertLimit] = useState("0");
   const [error, setError] = useState("");
 
@@ -25,8 +25,8 @@ export default function SignupForm(props) {
         email,
         password,
         username,
-        phoneNumber,
-        parseInt(alertLimit)
+        // phoneNumber,
+        parseInt(alertLimit) * 60
       );
       changeToLogin();
     } catch (e) {
@@ -48,9 +48,9 @@ export default function SignupForm(props) {
     setUsername(e.target.value);
   };
 
-  const handlePhoneNumberChange = (e) => {
-    setPhoneNumber(e.target.value);
-  };
+  // const handlePhoneNumberChange = (e) => {
+  //   setPhoneNumber(e.target.value);
+  // };
 
   const handleAlertLimitChange = (e) => {
     setAlertLimit(e.target.value);
@@ -78,24 +78,26 @@ export default function SignupForm(props) {
         <Form.Group controlId="formUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
-            type="username"
+            type="text"
             placeholder="Username"
             onChange={handleUsernameChange}
           />
         </Form.Group>
-        <Form.Group controlId="formPhoneNumber">
+        {/* <Form.Group controlId="formPhoneNumber">
           <Form.Label>Phone Number</Form.Label>
           <Form.Control
-            type="phoneNumber"
+            type="tel"
+            pattern={""}
             placeholder="Such as: +972501234567"
             onChange={handlePhoneNumberChange}
           />
-        </Form.Group>
+        </Form.Group> */}
         <Form.Group controlId="formAlertLimitNumber">
           <Form.Label>Alert Limit</Form.Label>
           <Form.Control
-            type="alertLimit"
-            placeholder="AlertLimit"
+            type="number"
+            min={0}
+            placeholder="Max amount of min to be notified"
             onChange={handleAlertLimitChange}
           />
         </Form.Group>

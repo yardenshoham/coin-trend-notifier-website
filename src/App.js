@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import HomepageNavbar from "./components/Navbar/HomepageNavbar";
 import TrendsContainer from "./components/Trends/TrendsContainer";
 import LoginForm from "./components/Login/LoginForm";
@@ -117,6 +117,5 @@ export default function App(props) {
     );
   };
 
-  useEffect(() => {});
   return whatDoDisplay();
 }

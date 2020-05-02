@@ -6,7 +6,7 @@ export const createNewUser = async (
   email,
   password,
   username,
-  phoneNumber,
+  // phoneNumber,
   alertLimit
 ) => {
   return (
@@ -14,8 +14,8 @@ export const createNewUser = async (
       email,
       password,
       username,
-      phoneNumber,
-      alertLimit
+      // phoneNumber,
+      alertLimit,
     })
   ).data;
 };
@@ -25,15 +25,15 @@ export const updateUser = async (
   email,
   password,
   username,
-  phoneNumber,
+  // phoneNumber,
   alertLimit
 ) => {
   return await axios.put(path + "api/users", {
     email,
     password,
     username,
-    phoneNumber,
-    alertLimit
+    // phoneNumber,
+    alertLimit,
   }).data;
 };
 
@@ -50,6 +50,6 @@ export const changeUserPassword = async (oldPassword, newPassword) => {
   return await axios.patch(path + "api/users/password", {
     oldPassword,
     newPassword,
-    config
+    config,
   });
 };
