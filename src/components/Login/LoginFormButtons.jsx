@@ -7,7 +7,7 @@ export default function LoginFormButtons(props) {
   const history = useHistory();
 
   const changePageToSignup = () => {
-    history.push("/signup");
+    history.push("/coin-trend-notifier-website/signup");
   };
 
   return (

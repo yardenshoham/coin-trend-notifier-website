@@ -7,9 +7,9 @@ export default function Home(props) {
   useEffect(() => {
     console.log("history is: " + props.history);
     if (localStorage.getItem("jwt")) {
-      history.push("/trends");
+      history.push("/coin-trend-notifier-website/trends");
     } else {
-      history.push("/login");
+      history.push("/coin-trend-notifier-website/login");
     }
   });
 

@@ -41,7 +41,7 @@ export default function LoginForm(props) {
   const history = useHistory();
   useEffect(() => {
     if (localStorage.getItem("jwt")) {
-      history.push("/trends");
+      history.push("/coin-trend-notifier-website/trends");
     }
   });
 

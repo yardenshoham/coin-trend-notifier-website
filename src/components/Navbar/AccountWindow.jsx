@@ -32,7 +32,9 @@ class AccountWindow extends Component {
               color: "rgba(255,255,255,.5)",
             }}
           >
-            <Link to="/preferences">My Preferences</Link>
+            <Link to="/coin-trend-notifier-website/preferences">
+              My Preferences
+            </Link>
           </ListGroup.Item>
           <ListGroup.Item
             style={{
@@ -40,7 +42,9 @@ class AccountWindow extends Component {
               color: "rgba(255,255,255,.5)",
             }}
           >
-            <Link to="/settings">Account Settings</Link>
+            <Link to="/coin-trend-notifier-website/settings">
+              Account Settings
+            </Link>
           </ListGroup.Item>
         </ListGroup>
       </React.Fragment>

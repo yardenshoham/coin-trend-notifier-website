@@ -27,7 +27,7 @@ export default function App(props) {
           <AccountWindow visible={accountWindow} />
 
           <Switch>
-            <Route path="/login">
+            <Route path="/coin-trend-notifier-website/login">
               <Container fluid className="HomepageBody">
                 <Row>
                   <Col
@@ -48,7 +48,7 @@ export default function App(props) {
                 </Row>
               </Container>
             </Route>
-            <Route path="/trends">
+            <Route path="/coin-trend-notifier-website/trends">
               <div
                 style={{
                   position: "relative",
@@ -60,7 +60,7 @@ export default function App(props) {
                 <TrendsContainer />
               </div>
             </Route>
-            <Route path="/signup">
+            <Route path="/coin-trend-notifier-website/signup">
               <Container fluid className="HomepageBody">
                 <Row>
                   <Col
@@ -81,10 +81,10 @@ export default function App(props) {
                 </Row>
               </Container>
             </Route>
-            <Route path="/settings">
+            <Route path="/coin-trend-notifier-website/settings">
               <React.Fragment></React.Fragment>
             </Route>
-            <Route path="/preferences">
+            <Route path="/coin-trend-notifier-website/preferences">
               <Container fluid className="HomepageBody">
                 <Row>
                   <Col
@@ -105,10 +105,10 @@ export default function App(props) {
                 </Row>
               </Container>
             </Route>
-            <Route path="/about">
+            <Route path="/coin-trend-notifier-website/about">
               <React.Fragment></React.Fragment>
             </Route>
-            <Route path="/">
+            <Route path="/coin-trend-notifier-website/">
               <Home />
             </Route>
           </Switch>

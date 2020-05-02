@@ -7,7 +7,7 @@ export default function HomepageNavbar(props) {
   const history = useHistory();
 
   const changepage = (pageName) => {
-    history.push(`/${pageName}`);
+    history.push(`/coin-trend-notifier-website/${pageName}`);
   };
 
   return (

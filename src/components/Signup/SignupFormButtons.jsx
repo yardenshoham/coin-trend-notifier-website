@@ -6,7 +6,7 @@ export default function SignupFormButtons(props) {
   const history = useHistory();
   const styleMargin = "m-3";
   let changeToLogin = () => {
-    history.push("/login");
+    history.push("/coin-trend-notifier-website/login");
   };
 
   return (

@@ -15,7 +15,7 @@ export default function SignupForm(props) {
 
   const history = useHistory();
   const changeToLogin = () => {
-    history.push("/login");
+    history.push("/coin-trend-notifier-website/login");
   };
   const handleSignup = async (event) => {
     // prevent page from refreshing
