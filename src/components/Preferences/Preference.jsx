@@ -183,7 +183,7 @@ class Preference extends Component {
                 defaultValue={
                   this.props.preference.probability === "Probability"
                     ? "Probability"
-                    : this.props.preference.probability * 100
+                    : this.props.preference.probability * 100 + "%"
                 }
                 disabled={!this.state.edit}
                 as="select"

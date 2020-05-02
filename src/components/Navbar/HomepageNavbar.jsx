@@ -36,12 +36,12 @@ export default function HomepageNavbar(props) {
               <Nav.Link onClick={() => changepage("about")}>About</Nav.Link>
             </Nav>
             <Nav className="mr-sm-2" variant="dark">
-              <Nav.Item
+              <Nav.Link
                 style={{ color: "rgba(255,255,255,.5)" }}
                 onClick={() => props.onAccountWindowChange()}
               >
                 Account
-              </Nav.Item>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

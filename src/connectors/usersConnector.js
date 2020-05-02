@@ -53,3 +53,10 @@ export const changeUserPassword = async (oldPassword, newPassword) => {
     config,
   });
 };
+
+// Get user details
+export const getUser = async () => {
+  let token = localStorage.getItem("jwt");
+  let config = { headers: { Authorization: `Bearer ${token}` } };
+  return await axios.get(path + "api/users", config);
+};

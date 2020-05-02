@@ -5,13 +5,7 @@ import * as eventConnector from "../../connectors/eventConnector";
 
 class TrendsContainer extends Component {
   state = {
-    allTrends: [
-      { base: "BTC", quote: "USDT", type: "up", chance: 30, url: "#href" },
-      { base: "ETH", quote: "USDT", type: "up", chance: 30, url: "#href" },
-      { base: "TRX", quote: "USDT", type: "down", chance: 30, url: "#href" },
-      { base: "ETH", quote: "BTC", type: "up", chance: 30, url: "#href" },
-      { base: "TRX", quote: "BTC", type: "down", chance: 30, url: "#href" },
-    ],
+    allTrends: [],
   };
   verticalCenterStyle = {
     minHeight: "100%",
@@ -25,9 +19,20 @@ class TrendsContainer extends Component {
   };
 
   handleAllTrends = async () => {
-    let res = await eventConnector.getEvents();
+    let { data: res } = await eventConnector.getEvents();
     //need to load the allTrends in the state from the res
-    console.log(res);
+    this.setState({
+      allTrends: res.map((event) => {
+        return {
+          base: event.baseAsset,
+          quote: event.quoteAsset,
+          type: event.probability > 0 ? "up" : "down",
+          chance: Math.round(event.probability * 10),
+          url: "/coin-trend-notifier-website/trend/" + event._id,
+          // firedAt:
+        };
+      }),
+    });
   };
 
   componentDidMount() {
