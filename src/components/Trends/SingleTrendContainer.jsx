@@ -1,80 +1,75 @@
 import React from "react";
-import { Container, Row, Col, Badge, Card } from "react-bootstrap";
-// import BorderedBox from "./BordredBox";
-import { Component } from "react";
+import { Container, Row, Col, Badge, Card, Button } from "react-bootstrap";
 import Arrow from "./Arrow";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useHistory } from "react-router-dom";
 
-class SingleTrendContainer extends Component {
-  verticalCenterStyle = {
+export default function SingleTrendContainer(props) {
+  const history = useHistory();
+  const verticalCenterStyle = {
     minHeight: "100%",
     display: "flex",
     alignItems: "center",
   };
-  verticalCenterMarginzStyle = {
+  const verticalCenterMarginzStyle = {
     minHeight: "100%",
     display: "flex",
     alignItems: "center",
     width: "0px",
     color: "lightslategrey",
   };
-  borderStyle = {
+  const borderStyle = {
     padding: "5px",
     textAlign: "center",
   };
 
-  render() {
-    return (
-      <React.Fragment>
-        <Card>
-          <Container fluid="true" style={this.borderStyle}>
-            <Row noGutters="true">
-              <Col xs={1}>
-                <h3 style={this.verticalCenterMarginzStyle}>
-                  {this.props.indx}
-                </h3>
-              </Col>
-              <Col>
-                <h3 style={this.verticalCenterStyle}>
-                  <Badge
-                    variant={this.props.type === "up" ? "success" : "danger"}
-                  >
-                    {this.props.base + "/" + this.props.quote}
-                  </Badge>
-                </h3>
-              </Col>
-              <Col
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                }}
+  return (
+    <React.Fragment>
+      <Card>
+        <Container fluid="true" style={borderStyle}>
+          <Row noGutters="true">
+            <Col xs={1}>
+              <h3 style={verticalCenterMarginzStyle}>{props.indx}</h3>
+            </Col>
+            <Col>
+              <h3 style={verticalCenterStyle}>
+                <Badge variant={props.type === "up" ? "success" : "danger"}>
+                  {props.base + "/" + props.quote}
+                </Badge>
+              </h3>
+            </Col>
+            <Col
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <h3>
+                {props.type === "up" ? (
+                  <Arrow color="green" />
+                ) : (
+                  <Arrow color="red" />
+                )}
+              </h3>
+            </Col>
+            <Col>
+              <h3 style={verticalCenterStyle}>
+                <Badge variant={props.type === "up" ? "success" : "danger"}>
+                  {props.chance + "%"}
+                </Badge>
+              </h3>
+            </Col>
+            <Col>
+              <Button
+                style={verticalCenterStyle}
+                variant="info"
+                href={`/coin-trend-notifier-website/trends/${props.id}`}
               >
-                <h3>
-                  {this.props.type === "up" ? (
-                    <Arrow color="green" />
-                  ) : (
-                    <Arrow color="red" />
-                  )}
-                </h3>
-              </Col>
-              <Col>
-                <h3 style={this.verticalCenterStyle}>
-                  <Badge
-                    variant={this.props.type === "up" ? "success" : "danger"}
-                  >
-                    {this.props.chance + "%"}
-                  </Badge>
-                </h3>
-              </Col>
-              <Col>
-                <h3 style={this.verticalCenterStyle}>{this.props.url}</h3>
-              </Col>
-            </Row>
-          </Container>
-        </Card>
-      </React.Fragment>
-    );
-  }
+                Click for more
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+      </Card>
+    </React.Fragment>
+  );
 }
-
-export default SingleTrendContainer;

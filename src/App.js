@@ -1,6 +1,7 @@
 import React from "react";
 import HomepageNavbar from "./components/Navbar/HomepageNavbar";
 import TrendsContainer from "./components/Trends/TrendsContainer";
+import Trend from "./components/Trends/Trend";
 import LoginForm from "./components/Login/LoginForm";
 import SignupForm from "./components/Signup/SignupForm";
 import Preferences from "./components/Preferences/Preferences";
@@ -10,6 +11,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App(props) {
+  const app = "/coin-trend-notifier-website/";
+
   const whatDoDisplay = () => {
     return (
       <Router>
@@ -17,7 +20,9 @@ export default function App(props) {
           <HomepageNavbar />
 
           <Switch>
-            <Route path="/coin-trend-notifier-website/login">
+            <Route path={app + "trends/:id"} component={Trend}></Route>
+
+            <Route path={app + "login"}>
               <Container fluid className="HomepageBody">
                 <Row>
                   <Col
@@ -38,7 +43,7 @@ export default function App(props) {
                 </Row>
               </Container>
             </Route>
-            <Route path="/coin-trend-notifier-website/trends">
+            <Route path={app + "trends"}>
               <div
                 style={{
                   position: "relative",
@@ -50,7 +55,7 @@ export default function App(props) {
                 <TrendsContainer />
               </div>
             </Route>
-            <Route path="/coin-trend-notifier-website/signup">
+            <Route path={app + "signup"}>
               <Container fluid className="HomepageBody">
                 <Row>
                   <Col
@@ -71,10 +76,10 @@ export default function App(props) {
                 </Row>
               </Container>
             </Route>
-            <Route path="/coin-trend-notifier-website/settings">
+            <Route path={app + "settings"}>
               <React.Fragment></React.Fragment>
             </Route>
-            <Route path="/coin-trend-notifier-website/preferences">
+            <Route path={app + "preferences"}>
               <Container fluid className="HomepageBody">
                 <Row>
                   <Col
@@ -95,10 +100,10 @@ export default function App(props) {
                 </Row>
               </Container>
             </Route>
-            <Route path="/coin-trend-notifier-website/about">
+            <Route path={app + "about"}>
               <React.Fragment></React.Fragment>
             </Route>
-            <Route path="/coin-trend-notifier-website/">
+            <Route path={app + ""}>
               <Home />
             </Route>
           </Switch>

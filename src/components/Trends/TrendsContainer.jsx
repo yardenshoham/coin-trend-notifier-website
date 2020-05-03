@@ -24,12 +24,13 @@ class TrendsContainer extends Component {
     this.setState({
       allTrends: res.map((event) => {
         return {
-          base: event.baseAsset,
-          quote: event.quoteAsset,
+          base: event.baseAssetName,
+          quote: event.quoteAssetName,
           type: event.probability > 0 ? "up" : "down",
-          chance: Math.round(event.probability * 10),
-          url: "/coin-trend-notifier-website/trend/" + event._id,
-          // firedAt:
+          chance: Math.round(event.probability * 100),
+          url: "/coin-trend-notifier-website/trends/" + event._id,
+          firedAt: event.firedAt,
+          id: event._id,
         };
       }),
     });
@@ -59,7 +60,7 @@ class TrendsContainer extends Component {
                 <h4 style={this.verticalCenterStyle}>Expected to</h4>
               </Col>
               <Col>
-                <h4 style={this.verticalCenterStyle}>Possibilty</h4>
+                <h4 style={this.verticalCenterStyle}>Probability</h4>
               </Col>
               <Col>
                 <h4 style={this.verticalCenterStyle}>More info</h4>
@@ -77,6 +78,8 @@ class TrendsContainer extends Component {
               type={trend.type}
               chance={trend.chance}
               url={trend.url}
+              firedAt={trend.firedAt}
+              id={trend.id}
             />
           );
         })}
