@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import * as eventConnector from "../../connectors/eventConnector";
 
 export default function Trend(props) {
