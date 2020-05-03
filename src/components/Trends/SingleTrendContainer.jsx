@@ -1,10 +1,8 @@
 import React from "react";
 import { Container, Row, Col, Badge, Card, Button } from "react-bootstrap";
 import Arrow from "./Arrow";
-import { useHistory } from "react-router-dom";
 
 export default function SingleTrendContainer(props) {
-  const history = useHistory();
   const verticalCenterStyle = {
     minHeight: "100%",
     display: "flex",
