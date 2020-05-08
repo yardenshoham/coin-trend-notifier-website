@@ -81,7 +81,12 @@ class Preferences extends Component {
 
     return (
       <React.Fragment>
-        <h1>Hi, {"Username"}</h1>
+        <h1>
+          Hi,{" "}
+          {localStorage.getItem("username")
+            ? localStorage.getItem("username")
+            : "Guest"}
+        </h1>
         <span>In this page you can edit your preferred coins.</span>
         <br />
         <span>
