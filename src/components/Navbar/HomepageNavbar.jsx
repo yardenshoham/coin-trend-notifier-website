@@ -41,8 +41,22 @@ export default function HomepageNavbar(props) {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link onClick={() => changepage("")}>Home</Nav.Link>
-              <Nav.Link onClick={() => changepage("about")}>About</Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  if (accountWindow) handleAccountWindowChange();
+                  changepage("");
+                }}
+              >
+                Home
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  if (accountWindow) handleAccountWindowChange();
+                  changepage("about");
+                }}
+              >
+                About
+              </Nav.Link>
             </Nav>
             <Nav className="mr-sm-2" variant="dark">
               <Nav.Link
@@ -54,7 +68,10 @@ export default function HomepageNavbar(props) {
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <AccountWindow visible={accountWindow} />
+        <AccountWindow
+          visible={accountWindow}
+          onAccountWindowChange={handleAccountWindowChange}
+        />
       </Navbar>
     </React.Fragment>
   );

@@ -35,7 +35,10 @@ export default function AccountWindow(props) {
             color: "rgba(255,255,255,.5)",
           }}
         >
-          <Link to="/coin-trend-notifier-website/preferences">
+          <Link
+            onClick={props.onAccountWindowChange}
+            to="/coin-trend-notifier-website/preferences"
+          >
             My Preferences
           </Link>
         </ListGroup.Item>
@@ -45,7 +48,10 @@ export default function AccountWindow(props) {
             color: "rgba(255,255,255,.5)",
           }}
         >
-          <Link to="/coin-trend-notifier-website/settings">
+          <Link
+            onClick={props.onAccountWindowChange}
+            to="/coin-trend-notifier-website/settings"
+          >
             Account Settings
           </Link>
         </ListGroup.Item>
@@ -61,6 +67,7 @@ export default function AccountWindow(props) {
             style={{ color: "rgba(255,255,255,.5)" }}
             onClick={() => {
               localStorage.setItem("jwt", "");
+              props.onAccountWindowChange();
               history.push("/coin-trend-notifier-website/home");
             }}
           >
