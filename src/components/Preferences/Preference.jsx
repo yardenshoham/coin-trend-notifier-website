@@ -9,6 +9,18 @@ class Preference extends Component {
     originalValues: {},
   };
 
+  constructor(props) {
+    super(props);
+    const originalValues = Object.assign({}, this.props.preference);
+    const preference = Object.assign({}, this.props.preference);
+    const edit = this.props.editing;
+    this.state = {
+      edit,
+      preference,
+      originalValues,
+    };
+  }
+
   calculateProbabilities = () => {
     let probs = [];
     for (let i = 10; i <= 90; i += 10) {
@@ -104,15 +116,12 @@ class Preference extends Component {
     this.setState({ preference: tempUserPreferences });
   };
 
-  componentDidMount = () => {
-    const originalValues = Object.assign({}, this.props.preference);
-    const preference = Object.assign({}, this.props.preference);
-    const edit = this.props.editing;
-    this.setState({
-      edit,
-      preference,
-      originalValues,
-    });
+  componentDidMount = () => {};
+
+  getDefaultValue = () => {
+    return this.props.preference.probability === "Probability"
+      ? "Probability"
+      : this.props.preference.probability * 100;
   };
 
   render() {
@@ -180,23 +189,21 @@ class Preference extends Component {
             </Col>
             <Col>
               <Form.Control
-                defaultValue={
-                  this.props.preference.probability === "Probability"
-                    ? "Probability"
-                    : this.props.preference.probability * 100 + "%"
-                }
+                defaultValue={this.getDefaultValue()}
                 disabled={!this.state.edit}
                 as="select"
                 onChange={(e) =>
                   this.handlePreferenceChanges("prob", this.props.index, e)
                 }
               >
-                <option>Probability</option>
+                <option key={"option_new"} value={"Probability"}>
+                  Probability
+                </option>
                 {this.calculateProbabilities().map((n) => {
                   let num = parseInt(n);
                   return (
                     <option key={"option_" + num} value={num}>
-                      {num}
+                      {num + "%"}
                     </option>
                   );
                 })}
