@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "58e68de17c125ac0e79a22ad322e47ce",
+    "revision": "1f9bc1685091a22c731eb031d4e23eba",
     "url": "/coin-trend-notifier-website/index.html"
   },
   {
