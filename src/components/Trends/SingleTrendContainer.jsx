@@ -52,7 +52,7 @@ export default function SingleTrendContainer(props) {
             <Col>
               <h3 style={verticalCenterStyle}>
                 <Badge variant={props.type === "up" ? "success" : "danger"}>
-                  {props.chance + "%"}
+                  {Math.abs(props.chance) + "%"}
                 </Badge>
               </h3>
             </Col>
