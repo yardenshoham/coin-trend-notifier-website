@@ -6,6 +6,7 @@ import * as eventConnector from "../../connectors/eventConnector";
 class TrendsContainer extends Component {
   state = {
     allTrends: [],
+    amount: 15, // default
   };
   verticalCenterStyle = {
     minHeight: "100%",
@@ -19,7 +20,7 @@ class TrendsContainer extends Component {
   };
 
   handleAllTrends = async () => {
-    let { data: res } = await eventConnector.getEvents();
+    let { data: res } = await eventConnector.getEvents(this.state.amount);
     //need to load the allTrends in the state from the res
     this.setState({
       allTrends: res.map((event) => {

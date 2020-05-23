@@ -7,8 +7,6 @@ import AccountWindow from "./AccountWindow";
 export default function HomepageNavbar(props) {
   const [accountWindow, setAccountWindow] = useState(false);
 
-  // const history = useHistory();
-
   const handleAccountWindowChange = () => {
     setAccountWindow(!accountWindow);
   };

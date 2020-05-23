@@ -23,18 +23,25 @@ export const createNewUser = async (
 // Update a user
 export const updateUser = async (
   email,
-  password,
   username,
   // phoneNumber,
   alertLimit
 ) => {
-  return await axios.put(path + "api/users", {
-    email,
-    password,
-    username,
-    // phoneNumber,
-    alertLimit,
-  }).data;
+  let token = localStorage.getItem("jwt");
+  let config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  return await axios.put(
+    path + "api/users",
+    {
+      email,
+      username,
+      // phoneNumber,
+      alertLimit,
+    },
+    config
+  ).data;
 };
 
 // Login a user
@@ -47,11 +54,14 @@ export const loginUser = async (email, password) => {
 export const changeUserPassword = async (oldPassword, newPassword) => {
   let token = localStorage.getItem("jwt");
   let config = { headers: { Authorization: `Bearer ${token}` } };
-  return await axios.patch(path + "api/users/password", {
-    oldPassword,
-    newPassword,
-    config,
-  });
+  return await axios.patch(
+    path + "api/users/password",
+    {
+      oldPassword,
+      newPassword,
+    },
+    config
+  );
 };
 
 // Get user details

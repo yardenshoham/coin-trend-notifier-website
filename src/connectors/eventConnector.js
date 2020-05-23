@@ -6,7 +6,7 @@ const path = "https://coin-trend-notifier-api.herokuapp.com/";
 export const getEvents = (amount) => {
   let token = localStorage.getItem("jwt");
   let config = { headers: { Authorization: `Bearer ${token}` } };
-  return axios.get(path + "api/events", config);
+  return axios.get(path + `api/events?amount=${amount}`, config);
 };
 
 // Get all Event History By ID

@@ -3,6 +3,8 @@ import HomepageNavbar from "./components/Navbar/HomepageNavbar";
 import TrendsContainer from "./components/Trends/TrendsContainer";
 import Trend from "./components/Trends/Trend";
 import LoginForm from "./components/Login/LoginForm";
+import SettingsPage from "./components/Settings/ChangeSettings/SettingsPage";
+import ChangePasswordForm from "./components/Settings/ChangePassword/ChangePasswordForm";
 import SignupForm from "./components/Signup/SignupForm";
 import Preferences from "./components/Preferences/Preferences";
 import Home from "./components/Home";
@@ -76,8 +78,48 @@ export default function App(props) {
                 </Row>
               </Container>
             </Route>
+            <Route path={app + "settings/pass"}>
+              <Container fluid className="HomepageBody">
+                <Row>
+                  <Col
+                    style={{
+                      border: "1px solid gray",
+                      padding: "50px",
+                      position: "relative",
+                      top: "10%",
+                      margin: "auto",
+                      boxShadow: "0px 0px 8px -2px",
+                      borderRadius: "1%",
+                    }}
+                    md={5}
+                    xs={10}
+                  >
+                    <ChangePasswordForm />
+                  </Col>
+                </Row>
+              </Container>
+            </Route>
+
             <Route path={app + "settings"}>
-              <React.Fragment></React.Fragment>
+              <Container fluid className="HomepageBody">
+                <Row>
+                  <Col
+                    style={{
+                      border: "1px solid gray",
+                      padding: "50px",
+                      position: "relative",
+                      top: "10%",
+                      margin: "auto",
+                      boxShadow: "0px 0px 8px -2px",
+                      borderRadius: "1%",
+                    }}
+                    md={5}
+                    xs={10}
+                  >
+                    <SettingsPage />
+                  </Col>
+                </Row>
+              </Container>
             </Route>
             <Route path={app + "preferences"}>
               <Container fluid className="HomepageBody">

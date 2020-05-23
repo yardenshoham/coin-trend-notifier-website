@@ -31,14 +31,13 @@ export default function LoginForm(props) {
       await usersConnector.loginUser(email, password);
       // get user info
       let user = (await usersConnector.getUser()).data;
-      console.log(user);
+      // console.log(user);
       localStorage.setItem("username", user.username);
       history.push("/coin-trend-notifier-website/trends");
       // succesfully logged in
     } catch (e) {
       // error handling
       handleErrorChange();
-      console.log(e.message);
     }
   };
 
