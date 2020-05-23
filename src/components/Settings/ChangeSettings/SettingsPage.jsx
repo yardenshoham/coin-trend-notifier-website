@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Tooltip, Overlay } from "react-bootstrap";
 import * as usersConnector from "../../../connectors/usersConnector";
 import SettingsPageButtons from "./SettingsPageButtons";
 import { useHistory } from "react-router-dom";
@@ -11,6 +11,7 @@ export default function SettingsPage(props) {
   // const [phoneNumber, setPhoneNumber] = useState("");
   const [alertLimit, setAlertLimit] = useState("0");
   const [error, setError] = useState("");
+  const [showHover, setShowHover] = useState(false);
   const emailRef = useRef(null);
   const usernameRef = useRef(null);
   const alertRef = useRef(null);
@@ -107,6 +108,13 @@ export default function SettingsPage(props) {
           />
         </Form.Group> */}
         <Form.Group controlId="formAlertLimitNumber">
+          <Overlay target={alertRef.current} show={showHover} placement="right">
+            {(props) => (
+              <Tooltip id="overlay-alert" {...props}>
+                Max amount of min hours to be notified
+              </Tooltip>
+            )}
+          </Overlay>
           <Form.Label>Alert Limit</Form.Label>
           <Form.Control
             type="number"
@@ -114,6 +122,8 @@ export default function SettingsPage(props) {
             min={0}
             value={alertLimit}
             onChange={handleAlertLimitChange}
+            onMouseOver={() => setShowHover(!showHover)}
+            onMouseOut={() => setShowHover(!showHover)}
           />
         </Form.Group>
         <div style={{ textAlign: "center" }} className={"m-3"}>

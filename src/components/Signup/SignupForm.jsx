@@ -97,7 +97,7 @@ export default function SignupForm(props) {
           <Form.Control
             type="number"
             min={0}
-            placeholder="Max amount of min to be notified"
+            placeholder="Max amount of min hours to be notified"
             onChange={handleAlertLimitChange}
           />
         </Form.Group>
