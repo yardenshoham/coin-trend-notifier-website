@@ -1,5 +1,6 @@
 import React from "react";
 import HomepageNavbar from "./components/Navbar/HomepageNavbar";
+import AboutPage from "./components/About/AboutPage";
 import TrendsContainer from "./components/Trends/TrendsContainer";
 import Trend from "./components/Trends/Trend";
 import LoginForm from "./components/Login/LoginForm";
@@ -143,7 +144,7 @@ export default function App(props) {
               </Container>
             </Route>
             <Route path={app + "about"}>
-              <React.Fragment></React.Fragment>
+              <AboutPage />
             </Route>
             <Route path={app + ""}>
               <Home />
