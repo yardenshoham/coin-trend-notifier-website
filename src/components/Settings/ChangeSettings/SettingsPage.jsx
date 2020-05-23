@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Form, Button } from "react-bootstrap";
 import * as usersConnector from "../../../connectors/usersConnector";
 import SettingsPageButtons from "./SettingsPageButtons";
@@ -60,13 +60,13 @@ export default function SettingsPage(props) {
     alertRef.current.value = 0;
   };
 
-  const getAndSetUser = async () => {
+  const getAndSetUser = useCallback(async () => {
     clearContent();
     let user = (await usersConnector.getUser()).data;
     setEmail(user.email);
     setUsername(user.username);
     setAlertLimit(user.alertLimit / 60);
-  };
+  }, []);
 
   const changeToPasswordChange = () => {
     history.push("/coin-trend-notifier-website/settings/pass");
@@ -74,7 +74,7 @@ export default function SettingsPage(props) {
 
   useEffect(() => {
     getAndSetUser();
-  }, []);
+  }, [getAndSetUser]);
 
   return (
     <React.Fragment>
