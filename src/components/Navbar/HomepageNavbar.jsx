@@ -56,20 +56,24 @@ export default function HomepageNavbar(props) {
                 About
               </Nav.Link>
             </Nav>
-            <Nav className="mr-sm-2" variant="dark">
+            <Nav
+              className="mr-sm-2"
+              variant="dark"
+              style={{ position: "relative" }}
+            >
               <Nav.Link
                 style={{ color: "rgba(255,255,255,.5)" }}
                 onClick={() => handleAccountWindowChange()}
               >
                 Account
               </Nav.Link>
+              <AccountWindow
+                visible={accountWindow}
+                onAccountWindowChange={handleAccountWindowChange}
+              />
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <AccountWindow
-          visible={accountWindow}
-          onAccountWindowChange={handleAccountWindowChange}
-        />
       </Navbar>
     </React.Fragment>
   );

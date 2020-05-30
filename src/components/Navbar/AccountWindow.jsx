@@ -1,22 +1,34 @@
 import React from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 export default function AccountWindow(props) {
   const history = useHistory();
+  const isComputer = useMediaQuery({ query: "(min-device-width: 1224px)" });
 
   return (
     <React.Fragment>
       <ListGroup
         id="AccountWindow"
-        style={{
-          top: "80px",
-          width: "18%",
-          position: "absolute",
-          right: "3px",
-          display: props.visible ? "block" : "none",
-          zIndex: "1",
-        }}
+        style={
+          isComputer
+            ? {
+                width: "250%",
+                right: "-39px",
+                top: "52px",
+                position: "absolute",
+                display: props.visible ? "block" : "none",
+                zIndex: "1",
+              }
+            : {
+                width: "100%",
+                top: "52px",
+                position: "absolute",
+                display: props.visible ? "block" : "none",
+                zIndex: "1",
+              }
+        }
       >
         <ListGroup.Item
           style={{
