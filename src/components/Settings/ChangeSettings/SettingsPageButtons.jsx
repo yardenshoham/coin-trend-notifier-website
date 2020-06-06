@@ -39,7 +39,7 @@ export default function SettingsPageButtons(props) {
           className={styleMargin}
         >
           <Button onClick={props.refresh} variant="outline-primary">
-            Refresh
+            Reset
           </Button>
         </Col>
       </Row>
