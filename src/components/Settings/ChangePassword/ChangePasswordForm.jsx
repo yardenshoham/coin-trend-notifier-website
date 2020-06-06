@@ -75,7 +75,7 @@ export default function ChangePasswordForm(props) {
           />
         </Form.Group>
         <Form.Group controlId="formNewPass2">
-          <Form.Label>Username</Form.Label>
+          <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter New Password Again"
