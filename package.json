@@ -8,6 +8,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.10",
     "axios": "^0.19.2",
+    "binance-api-node": "^0.10.3",
     "bootstrap": "^4.5.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",

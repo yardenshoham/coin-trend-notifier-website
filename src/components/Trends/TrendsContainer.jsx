@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
 import SingleTrendContainer from "./SingleTrendContainer";
 import * as eventConnector from "../../connectors/eventConnector";
 
 class TrendsContainer extends Component {
   state = {
     allTrends: [],
-    amount: 15, // default
+    amount: 100, // default
+    fetched: false,
   };
   verticalCenterStyle = {
     minHeight: "100%",
@@ -35,6 +36,8 @@ class TrendsContainer extends Component {
         };
       }),
     });
+    console.log(this.state.fetched);
+    this.setState({ fetched: !this.state.fetched });
   };
 
   componentDidMount() {
@@ -46,7 +49,13 @@ class TrendsContainer extends Component {
   }
 
   render() {
-    return (
+    return !this.state.fetched ? (
+      <React.Fragment>
+        <div style={{ textAlign: "center" }}>
+          <Spinner animation="border" variant="primary" />
+        </div>
+      </React.Fragment>
+    ) : (
       <React.Fragment>
         <Card>
           <Container fluid="true" style={this.borderStyle}>
