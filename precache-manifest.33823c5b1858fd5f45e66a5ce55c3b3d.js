@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dcd4b00ca14dc9d4a4cd9a21ba54605f",
+    "revision": "c6f75db83c7fdea0926763accda96b4d",
     "url": "/coin-trend-notifier-website/index.html"
   },
   {
-    "revision": "519f71e54e55119898fd",
-    "url": "/coin-trend-notifier-website/static/css/2.ed439b8d.chunk.css"
+    "revision": "be5292a2b1984a46a34b",
+    "url": "/coin-trend-notifier-website/static/css/2.11829350.chunk.css"
   },
   {
     "revision": "fbe3a42303f8fa32bfa8",
     "url": "/coin-trend-notifier-website/static/css/main.34de6062.chunk.css"
   },
   {
-    "revision": "519f71e54e55119898fd",
+    "revision": "be5292a2b1984a46a34b",
     "url": "/coin-trend-notifier-website/static/js/2.00f76e52.chunk.js"
   },
   {
