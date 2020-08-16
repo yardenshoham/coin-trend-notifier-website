@@ -12,7 +12,7 @@ export default function Trend(props) {
   const msToDateTime = (ms) => {
     let dateTime = new Date(ms);
     return {
-      date: `${dateTime.getDay()}/${dateTime.getMonth()}/${dateTime.getFullYear()}`,
+      date: `${dateTime.getDate()}/${dateTime.getMonth()}/${dateTime.getFullYear()}`,
       time: `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`,
     };
   };
