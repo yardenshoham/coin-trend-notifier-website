@@ -62,7 +62,7 @@ export default function ChangePasswordForm(props) {
         <Form.Group controlId="formOldPassword">
           <Form.Label>Old Password</Form.Label>
           <Form.Control
-            type="text"
+            type="password"
             placeholder="Enter Old Password"
             onChange={handleOldPasswordChange}
           />
@@ -70,7 +70,7 @@ export default function ChangePasswordForm(props) {
         <Form.Group controlId="formNewPass1">
           <Form.Label>New Password</Form.Label>
           <Form.Control
-            type="text"
+            type="password"
             placeholder="Enter New Password"
             onChange={handleNewPass1Change}
           />
@@ -78,7 +78,7 @@ export default function ChangePasswordForm(props) {
         <Form.Group controlId="formNewPass2">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
-            type="text"
+            type="password"
             placeholder="Enter New Password Again"
             onChange={handleNewPass2Change}
           />
