@@ -9,6 +9,14 @@ class Preferences extends Component {
     editing: [],
     baseCoins: ["BTC", "ETH", "TRX", "USDT"],
     quoteCoins: ["BTC", "ETH", "TRX", "USDT"],
+    error: "",
+  };
+
+  handleErrorChange = (newError) => {
+    this.setState({ error: newError });
+    setTimeout(() => {
+      this.setState({ error: "" });
+    }, 5000);
   };
 
   handleNewUserPreferences = () => {
@@ -72,6 +80,7 @@ class Preferences extends Component {
             quoteCoins={this.state.quoteCoins}
             refresh={this.refreshData}
             onEditChange={this.handleEditingChange}
+            onError={this.handleErrorChange}
           />
         );
       });
@@ -97,6 +106,9 @@ class Preferences extends Component {
         <Form onSubmit={this.handleSaveChanges}>
           {preferences}
           <br />
+          <div id="error-container" style={{ textAlign: "center" }}>
+            <span>{this.state.error}</span>
+          </div>
           <ButtonToolbar className="justify-content-center">
             <Button
               variant="outline-primary"

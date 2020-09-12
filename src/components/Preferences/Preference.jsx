@@ -30,8 +30,7 @@ class Preference extends Component {
   };
 
   handleEditPreference = async (idx) => {
-    let tempEditing = this.state.edit;
-    tempEditing = !tempEditing;
+    let tempEditing = !this.state.edit;
 
     if (!tempEditing) {
       // if in Save mode
@@ -42,9 +41,10 @@ class Preference extends Component {
         this.state.preference.probability === "Probability"
       ) {
         tempEditing = !tempEditing; //if invalids then change to true
-        //make some error that saying that there are invalid inputs
+        //make some error that says that there are invalid inputs
         this.props.onEditChange(idx, tempEditing);
-        console.log("preferenced could not be saved");
+        this.props.onError("Error - found default values on new preference");
+        return;
       }
       if (!tempEditing) {
         if (
