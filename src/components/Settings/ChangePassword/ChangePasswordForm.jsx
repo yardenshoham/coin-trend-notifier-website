@@ -28,6 +28,7 @@ export default function ChangePasswordForm(props) {
         throw Error("Password must be over 6 characters");
       }
       await usersConnector.changeUserPassword(oldPassword, newPass1);
+      chageToSettings();
       // update the page with new data
     } catch (e) {
       //error handling
