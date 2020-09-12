@@ -27,7 +27,7 @@ export default function HomepageNavbar(props) {
         style={{ marginBottom: "30px", position: "relative" }}
       >
         <Container style={{ maxWidth: "1020px", margin: "auto" }}>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/coin-trend-notifier-website">
             <img
               src={logo}
               width="90px"
