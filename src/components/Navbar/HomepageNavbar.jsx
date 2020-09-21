@@ -70,6 +70,7 @@ export default function HomepageNavbar(props) {
               <AccountWindow
                 visible={accountWindow}
                 onAccountWindowChange={handleAccountWindowChange}
+                onLogout={props.onLogout}
               />
             </Nav>
           </Navbar.Collapse>

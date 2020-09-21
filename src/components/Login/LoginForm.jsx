@@ -1,6 +1,6 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-import * as usersConnector from "../../connectors/usersConnector";
+
 import LoginFormButtons from "./LoginFormButtons";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -27,8 +27,7 @@ export default function LoginForm(props) {
     // prevent page from refreshing
     event.preventDefault();
     try {
-      // login
-      await usersConnector.loginUser(email, password);
+      await props.onLogin(email, password);
       history.push("/coin-trend-notifier-website/trends");
       // succesfully logged in
     } catch (e) {

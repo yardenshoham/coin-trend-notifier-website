@@ -48,7 +48,8 @@ export const updateUser = async (
 export const loginUser = async (email, password) => {
   const res = await axios.post(path + "api/users/login", { email, password });
   localStorage.setItem("jwt", res.data.jwt);
-  localStorage.setItem("username", res.data.username);
+  const user = (await getUser()).data;
+  localStorage.setItem("username", user.username);
 };
 
 // Change user password

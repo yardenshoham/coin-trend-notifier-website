@@ -4,8 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
 export default function AccountWindow(props) {
-  const history = useHistory();
   const isComputer = useMediaQuery({ query: "(min-device-width: 1224px)" });
+  const history = useHistory();
 
   return (
     <React.Fragment>
@@ -78,9 +78,9 @@ export default function AccountWindow(props) {
             size="sm"
             style={{ color: "rgba(255,255,255,.5)" }}
             onClick={() => {
-              localStorage.setItem("jwt", "");
+              props.onLogout();
               props.onAccountWindowChange();
-              history.push("/coin-trend-notifier-website/home");
+              history.push(`/coin-trend-notifier-website/`);
             }}
           >
             Logout

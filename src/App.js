@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HomepageNavbar from "./components/Navbar/HomepageNavbar";
 import AboutPage from "./components/About/AboutPage";
 import TrendsContainer from "./components/Trends/TrendsContainer";
@@ -12,19 +12,32 @@ import Home from "./components/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import * as usersConnector from "./connectors/usersConnector";
 
 export default function App(props) {
   const app = "/coin-trend-notifier-website/";
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const logout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("username");
+  };
+
+  const login = async (email, pass) => {
+    setIsLoggedIn(false);
+    await usersConnector.loginUser(email, pass);
+  };
 
   const whatDoDisplay = () => {
     return (
       <Router>
         <div>
-          <HomepageNavbar />
+          <HomepageNavbar onLogout={logout} />
 
           <Switch>
-            <Route path={app + "trends/:id"} component={Trend}></Route>
-
+            <Route path={app + "trends/:id"} component={Trend} />
             <Route path={app + "login"}>
               <Container fluid className="HomepageBody">
                 <Row>
@@ -41,7 +54,7 @@ export default function App(props) {
                     md={5}
                     xs={10}
                   >
-                    <LoginForm />
+                    <LoginForm onLogin={login} />
                   </Col>
                 </Row>
               </Container>
@@ -100,7 +113,6 @@ export default function App(props) {
                 </Row>
               </Container>
             </Route>
-
             <Route path={app + "settings"}>
               <Container fluid className="HomepageBody">
                 <Row>
