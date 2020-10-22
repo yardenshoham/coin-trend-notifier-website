@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/coin-trend-notifier-website/precache-manifest.88308218e12c1f74cc2f6c732b82c3dc.js"
+  "/coin-trend-notifier-website/precache-manifest.f151eb017ef7c1fc31812c8ee1a327c0.js"
 );
 
 self.addEventListener('message', (event) => {
