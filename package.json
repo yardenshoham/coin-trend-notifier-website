@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://yardenshoham.github.io/coin-trend-notifier-website",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "axios": "^0.20.0",
