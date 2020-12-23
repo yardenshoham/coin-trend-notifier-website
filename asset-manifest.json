@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/coin-trend-notifier-website/static/css/main.4a4137e4.chunk.css",
-    "main.js": "/coin-trend-notifier-website/static/js/main.0368a7c8.chunk.js",
-    "main.js.map": "/coin-trend-notifier-website/static/js/main.0368a7c8.chunk.js.map",
+    "main.js": "/coin-trend-notifier-website/static/js/main.d0c8dbe4.chunk.js",
+    "main.js.map": "/coin-trend-notifier-website/static/js/main.d0c8dbe4.chunk.js.map",
     "runtime-main.js": "/coin-trend-notifier-website/static/js/runtime-main.59dd6e16.js",
     "runtime-main.js.map": "/coin-trend-notifier-website/static/js/runtime-main.59dd6e16.js.map",
     "static/css/2.1a02f21c.chunk.css": "/coin-trend-notifier-website/static/css/2.1a02f21c.chunk.css",
-    "static/js/2.7acc742f.chunk.js": "/coin-trend-notifier-website/static/js/2.7acc742f.chunk.js",
-    "static/js/2.7acc742f.chunk.js.map": "/coin-trend-notifier-website/static/js/2.7acc742f.chunk.js.map",
+    "static/js/2.4e43dd7c.chunk.js": "/coin-trend-notifier-website/static/js/2.4e43dd7c.chunk.js",
+    "static/js/2.4e43dd7c.chunk.js.map": "/coin-trend-notifier-website/static/js/2.4e43dd7c.chunk.js.map",
     "index.html": "/coin-trend-notifier-website/index.html",
     "static/css/2.1a02f21c.chunk.css.map": "/coin-trend-notifier-website/static/css/2.1a02f21c.chunk.css.map",
     "static/css/main.4a4137e4.chunk.css.map": "/coin-trend-notifier-website/static/css/main.4a4137e4.chunk.css.map",
-    "static/js/2.7acc742f.chunk.js.LICENSE.txt": "/coin-trend-notifier-website/static/js/2.7acc742f.chunk.js.LICENSE.txt",
+    "static/js/2.4e43dd7c.chunk.js.LICENSE.txt": "/coin-trend-notifier-website/static/js/2.4e43dd7c.chunk.js.LICENSE.txt",
     "static/media/logo.ce52a0ab.png": "/coin-trend-notifier-website/static/media/logo.ce52a0ab.png"
   },
   "entrypoints": [
     "static/js/runtime-main.59dd6e16.js",
     "static/css/2.1a02f21c.chunk.css",
-    "static/js/2.7acc742f.chunk.js",
+    "static/js/2.4e43dd7c.chunk.js",
     "static/css/main.4a4137e4.chunk.css",
-    "static/js/main.0368a7c8.chunk.js"
+    "static/js/main.d0c8dbe4.chunk.js"
   ]
 }
